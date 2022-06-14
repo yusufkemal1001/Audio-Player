@@ -12,7 +12,7 @@ namespace Audioplayer.Music_Controllers
 
         public void AddToQueue(string _Url)
         {
-           bool isUrl = _Url.Contains("@");
+           bool isUrl = _Url.Contains(".");
             if (!isUrl)
             {
                 //error not valid url
