@@ -53,9 +53,9 @@ namespace Audioplayer.Music_Controllers
             int nextint = currentInt - 1;
             extentions.DebugOutput(currentInt.ToString());
             extentions.DebugOutput(nextint.ToString());
-            if (nextint > queue.QueueList.Count - 1)
+            if (nextint < 0)
             {
-                nextint = queue.QueueList.Count;
+                nextint = queue.QueueList.Count - 1;
             }
             string newSong = queue.QueueList[nextint];
             Play(newSong);
