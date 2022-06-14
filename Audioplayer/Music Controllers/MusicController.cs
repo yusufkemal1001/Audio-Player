@@ -18,8 +18,8 @@ namespace Audioplayer.Music_Controllers
             {
                 
             }
-            Mp3Player mp3Player = new Mp3Player();
-            mp3Player.PlayMp3(fileName, mediaPlayer);
+            Mp3Player Player = new Mp3Player();
+            Player.PlayAudio(fileName, mediaPlayer);
         }
     }
 }

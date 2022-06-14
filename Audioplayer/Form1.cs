@@ -14,6 +14,7 @@ namespace Audioplayer
 {
     public partial class Form1 : Form
     {
+        Queue queue;
         Music_Controllers.MusicController musicController;
         public string Filepath = @"C:\Users\jaime\source\repos\Audio-Player\Audioplayer\TempMusic";
         public Form1()
@@ -29,13 +30,21 @@ namespace Audioplayer
 
         private void PlayBtn_Click(object sender, EventArgs e)
         {
-            musicController.Play(GetFileName());
+            musicController.Play(queue.QueueList[0]);
         }
 
-        private string GetFileName()
+        private void iniQueue()
         {
-            var files = Directory.GetFiles(Filepath);
-            return files[0];
+            queue = new Queue();
+
+            foreach (string item in Directory.GetFiles(Filepath))
+            {
+                queue.AddToQueue(item);
+
+            }
+            extentions.DebugOutput(queue.QueueList.Count.ToString());
         }
+
+
     }
 }

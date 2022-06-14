@@ -14,7 +14,7 @@ namespace Audioplayer.Music_Controllers
         string fileName;
      
         
-        public void PlayMp3(string _fileName, WindowsMediaPlayer _soundPlayer)
+        public void PlayAudio(string _fileName, WindowsMediaPlayer _soundPlayer)
         {
             soundPlayer = _soundPlayer;
             fileName = _fileName;
@@ -22,6 +22,7 @@ namespace Audioplayer.Music_Controllers
             soundPlayer.URL = fileName;
             soundPlayer.controls.play();
            
+            
         }
     }
 }
