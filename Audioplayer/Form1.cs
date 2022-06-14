@@ -20,6 +20,7 @@ namespace Audioplayer
         public Form1()
         {
             InitializeComponent();
+            isPlaying = false;
             musicController = new MusicController();
         }
 
@@ -27,21 +28,52 @@ namespace Audioplayer
         {
 
         }
-
+        bool isPlaying;
+        bool FirstPly = true;
         private void PlayBtn_Click(object sender, EventArgs e)
         {
-            musicController.PlaySong();
+            if (FirstPly)
+            {
+                musicController.PlaySong();
+                PlayBtn.Text = "pause";
+                FirstPly = false;
+                isPlaying = !isPlaying;
+                return;
+            }
+            if (isPlaying)
+            {
+                PlayBtn.Text = "play";
+
+                musicController.PauseSong();
+                isPlaying = !isPlaying;
+                return;
+            }
+            if (!FirstPly)
+            {
+                musicController.UnPause();
+                PlayBtn.Text = "pause";
+
+                isPlaying = !isPlaying;
+                return;
+            }
+            extentions.DebugOutput(isPlaying.ToString());
         }
 
         private void NextSongBtn_Click(object sender, EventArgs e)
         {
+            FirstPly = true;
+            isPlaying = true;
             musicController.NextSong();
 
         }
 
         private void PrevSongBtn_Click(object sender, EventArgs e)
         {
+            FirstPly = true;
+            isPlaying = true;
             musicController.PreviousSong();
+
+
         }
 
         private void NextSongBtn_Click_1(object sender, EventArgs e)
