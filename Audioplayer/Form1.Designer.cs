@@ -30,6 +30,8 @@ namespace Audioplayer
         private void InitializeComponent()
         {
             this.PlayBtn = new System.Windows.Forms.Button();
+            this.NextSongBtn = new System.Windows.Forms.Button();
+            this.PrevSongBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // PlayBtn
@@ -42,11 +44,32 @@ namespace Audioplayer
             this.PlayBtn.UseVisualStyleBackColor = true;
             this.PlayBtn.Click += new System.EventHandler(this.PlayBtn_Click);
             // 
+            // NextSongBtn
+            // 
+            this.NextSongBtn.Location = new System.Drawing.Point(502, 387);
+            this.NextSongBtn.Name = "NextSongBtn";
+            this.NextSongBtn.Size = new System.Drawing.Size(75, 23);
+            this.NextSongBtn.TabIndex = 1;
+            this.NextSongBtn.Text = "Next";
+            this.NextSongBtn.UseVisualStyleBackColor = true;
+            // 
+            // PrevSongBtn
+            // 
+            this.PrevSongBtn.Location = new System.Drawing.Point(256, 387);
+            this.PrevSongBtn.Name = "PrevSongBtn";
+            this.PrevSongBtn.Size = new System.Drawing.Size(75, 23);
+            this.PrevSongBtn.TabIndex = 2;
+            this.PrevSongBtn.Text = "Prev";
+            this.PrevSongBtn.UseVisualStyleBackColor = true;
+            this.PrevSongBtn.Click += new System.EventHandler(this.PrevSongBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.PrevSongBtn);
+            this.Controls.Add(this.NextSongBtn);
             this.Controls.Add(this.PlayBtn);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -58,6 +81,8 @@ namespace Audioplayer
         #endregion
 
         private System.Windows.Forms.Button PlayBtn;
+        private System.Windows.Forms.Button NextSongBtn;
+        private System.Windows.Forms.Button PrevSongBtn;
     }
 }
 

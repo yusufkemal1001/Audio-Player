@@ -30,21 +30,18 @@ namespace Audioplayer
 
         private void PlayBtn_Click(object sender, EventArgs e)
         {
-            musicController.Play(queue.QueueList[0]);
+            musicController.PlaySong();
         }
 
-        private void iniQueue()
+        private void NextSongBtn_Click(object sender, EventArgs e)
         {
-            queue = new Queue();
+            musicController.NextSong();
 
-            foreach (string item in Directory.GetFiles(Filepath))
-            {
-                queue.AddToQueue(item);
-
-            }
-            extentions.DebugOutput(queue.QueueList.Count.ToString());
         }
 
-
+        private void PrevSongBtn_Click(object sender, EventArgs e)
+        {
+            musicController.PreviousSong();
+        }
     }
 }
