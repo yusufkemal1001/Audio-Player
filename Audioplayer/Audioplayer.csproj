@@ -84,6 +84,7 @@
   <ItemGroup>
     <Folder Include="Database classes\" />
     <Folder Include="Form classes\" />
+    <Folder Include="TempMusic\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
