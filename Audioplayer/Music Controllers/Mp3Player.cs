@@ -10,7 +10,7 @@ namespace Audioplayer.Music_Controllers
 {
     public class Mp3Player
     {
-        SoundPlayer soundPlayer;
+        WindowsMediaPlayer soundPlayer;
         string fileName;
      
         
@@ -18,6 +18,9 @@ namespace Audioplayer.Music_Controllers
         {
             soundPlayer = _soundPlayer;
             fileName = _fileName;
+
+            soundPlayer.URL = fileName;
+            soundPlayer.controls.play();
            
         }
     }

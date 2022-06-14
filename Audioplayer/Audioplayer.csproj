@@ -52,6 +52,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Music Controllers\M4aPlayer.cs" />
     <Compile Include="Music Controllers\wavPlayer.cs" />
     <Compile Include="Music Controllers\Mp3Player.cs" />
     <Compile Include="Music Controllers\MusicController.cs" />
@@ -87,6 +88,8 @@
     <Folder Include="Form classes\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="TempMusic\Auto tune baby crying meme.aac" />
+    <Content Include="TempMusic\Goofy ahh sounds.wav" />
     <Content Include="TempMusic\TYLER1 FULL GATLIN GUN-[AudioTrimmer.com].mp3" />
   </ItemGroup>
   <ItemGroup>
@@ -105,6 +108,15 @@
       <VersionMinor>0</VersionMinor>
       <Lcid>0</Lcid>
       <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>

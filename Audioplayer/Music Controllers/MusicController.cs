@@ -3,30 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Media;
 using WMPLib;
 
 namespace Audioplayer.Music_Controllers
 {
-     public class MusicController
+    public class MusicController
     {
-        System.Media.SoundPlayer soundPlayer = new SoundPlayer();
         WindowsMediaPlayer mediaPlayer = new WindowsMediaPlayer();
-        
+
         public void Play(string fileName)
         {
             string fileType = fileName.Substring(fileName.Length - 4);
-            if (fileType == ".mp3")
+            if (fileType != ".mp3" && fileType != ".aac" && fileType != ".wav")
             {
-                Mp3Player mp3Player = new Mp3Player();
-                mp3Player.PlayMp3(fileName, mediaPlayer);
+                
             }
-            if(fileType == ".wav")
-            {
-                wavePlayer wavePlayer = new wavePlayer();
-                wavePlayer.PlayWav(fileName, soundPlayer);
-            }
+            Mp3Player mp3Player = new Mp3Player();
+            mp3Player.PlayMp3(fileName, mediaPlayer);
         }
-
     }
 }
