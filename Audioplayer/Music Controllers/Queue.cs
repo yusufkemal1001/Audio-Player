@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Audioplayer.Music_Controllers
 {
-    public class Queue
+    class Queue
     {
         public List<string> QueueList = new List<string>();
 
         public void AddToQueue(string _Url)
         {
-            bool isUrl = _Url.Contains(".");
+           bool isUrl = _Url.Contains("@");
             if (!isUrl)
             {
                 //error not valid url
@@ -20,13 +20,6 @@ namespace Audioplayer.Music_Controllers
             }
             QueueList.Add(_Url);
         }
-
-        public void Shuffle()
-        {
-            if (QueueList.Count > 1)
-            {
-                QueueList.Shuffle();
-            }
-        }
+       
     }
 }

@@ -46,24 +46,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
  Updated upstream
+=======
+>>>>>>> parent of 2efde6b (push new feature)
     <Compile Include="AudioFilesDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AudioFilesDataSet.xsd</DependentUpon>
     </Compile>
-=======
-    <Compile Include="extentions.cs" />
->>>>>>> Stashed changes
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Music Controllers\M4aPlayer.cs" />
+    <Compile Include="Music Controllers\wavPlayer.cs" />
     <Compile Include="Music Controllers\Mp3Player.cs" />
     <Compile Include="Music Controllers\MusicController.cs" />
-    <Compile Include="Music Controllers\Queue.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
