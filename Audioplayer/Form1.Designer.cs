@@ -29,7 +29,12 @@ namespace Audioplayer
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.PlayBtn = new System.Windows.Forms.Button();
+            this.audioFilesDataSet = new Audioplayer.AudioFilesDataSet();
+            this.audioFilesDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.audioFilesDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.audioFilesDataSetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // PlayBtn
@@ -42,6 +47,16 @@ namespace Audioplayer
             this.PlayBtn.UseVisualStyleBackColor = true;
             this.PlayBtn.Click += new System.EventHandler(this.PlayBtn_Click);
             // 
+            // audioFilesDataSet
+            // 
+            this.audioFilesDataSet.DataSetName = "AudioFilesDataSet";
+            this.audioFilesDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // audioFilesDataSetBindingSource
+            // 
+            this.audioFilesDataSetBindingSource.DataSource = this.audioFilesDataSet;
+            this.audioFilesDataSetBindingSource.Position = 0;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -51,6 +66,8 @@ namespace Audioplayer
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.audioFilesDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.audioFilesDataSetBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -58,6 +75,8 @@ namespace Audioplayer
         #endregion
 
         private System.Windows.Forms.Button PlayBtn;
+        private System.Windows.Forms.BindingSource audioFilesDataSetBindingSource;
+        private AudioFilesDataSet audioFilesDataSet;
     }
 }
 
