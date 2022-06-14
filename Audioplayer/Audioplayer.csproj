@@ -46,10 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
- Updated upstream
-=======
->>>>>>> parent of 2efde6b (push new feature)
     <Compile Include="AudioFilesDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -61,8 +57,6 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Music Controllers\M4aPlayer.cs" />
-    <Compile Include="Music Controllers\wavPlayer.cs" />
     <Compile Include="Music Controllers\Mp3Player.cs" />
     <Compile Include="Music Controllers\MusicController.cs" />
     <Compile Include="Program.cs" />
