@@ -9,10 +9,25 @@ namespace Audioplayer.Music_Controllers
 {
     public class MusicController
     {
-        WindowsMediaPlayer mediaPlayer = new WindowsMediaPlayer();
+        Queue queue;
 
-        public void Play(string fileName)
+
+        WindowsMediaPlayer mediaPlayer = new WindowsMediaPlayer();
+        string currentSong;
+
+        public void PlaySong()
         {
+            MakeQueue();
+
+            Play(queue.QueueList[0]);
+        }
+
+        private void Play(string fileName)
+        {
+            if(queue == null)
+            {
+                MakeQueue();
+            }
             string fileType = fileName.Substring(fileName.Length - 4);
             if (fileType != ".mp3" && fileType != ".aac" && fileType != ".wav")
             {
@@ -20,6 +35,55 @@ namespace Audioplayer.Music_Controllers
             }
             Mp3Player Player = new Mp3Player();
             Player.PlayAudio(fileName, mediaPlayer);
+            currentSong = fileName;
+        }
+
+        public void NextSong()
+        {
+            int currentInt = queue.QueueList.IndexOf(currentSong);
+            int nextint = currentInt + 1;
+            extentions.DebugOutput(currentInt.ToString());
+            extentions.DebugOutput(nextint.ToString());
+            if (nextint > queue.QueueList.Count - 1)
+            {
+                nextint = 0;
+            }
+            string newSong = queue.QueueList[nextint];
+            
+            
+            Play(newSong);
+        }
+
+        public void PreviousSong()
+        {
+            int currentInt = queue.QueueList.IndexOf(currentSong);
+            int nextint = currentInt - 1;
+            extentions.DebugOutput(currentInt.ToString());
+            extentions.DebugOutput(nextint.ToString());
+            if (nextint > queue.QueueList.Count - 1)
+            {
+                nextint = queue.QueueList.Count;
+            }
+            string newSong = queue.QueueList[nextint];
+
+
+            Play(newSong);
+        }
+
+        public void MakeQueue()
+        {
+            queue = new Queue();
+            queue.AddToQueue(@"C:\Users\jaime\source\repos\Audio-Player\Audioplayer\TempMusic\Auto tune baby crying meme.aac");
+            queue.AddToQueue(@"C:\Users\jaime\source\repos\Audio-Player\Audioplayer\TempMusic\Goofy ahh sounds.wav");
+            queue.AddToQueue(@"C:\Users\jaime\source\repos\Audio-Player\Audioplayer\TempMusic\TYLER1 FULL GATLIN GUN-[AudioTrimmer.com].mp3");
+
+            // queue.Shuffle();
+
+            foreach (var item in queue.QueueList)
+            {
+                extentions.DebugOutput(item);
+            }
+
         }
     }
 }
