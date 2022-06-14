@@ -43,5 +43,10 @@ namespace Audioplayer
         {
             musicController.PreviousSong();
         }
+
+        private void NextSongBtn_Click_1(object sender, EventArgs e)
+        {
+            musicController.NextSong();
+        }
     }
 }

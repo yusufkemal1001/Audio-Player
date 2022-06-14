@@ -36,9 +36,10 @@ namespace Audioplayer
             // 
             // PlayBtn
             // 
-            this.PlayBtn.Location = new System.Drawing.Point(364, 387);
+            this.PlayBtn.Location = new System.Drawing.Point(728, 744);
+            this.PlayBtn.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.PlayBtn.Name = "PlayBtn";
-            this.PlayBtn.Size = new System.Drawing.Size(75, 23);
+            this.PlayBtn.Size = new System.Drawing.Size(150, 44);
             this.PlayBtn.TabIndex = 0;
             this.PlayBtn.Text = "Play1";
             this.PlayBtn.UseVisualStyleBackColor = true;
@@ -46,18 +47,21 @@ namespace Audioplayer
             // 
             // NextSongBtn
             // 
-            this.NextSongBtn.Location = new System.Drawing.Point(502, 387);
+            this.NextSongBtn.Location = new System.Drawing.Point(1004, 744);
+            this.NextSongBtn.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.NextSongBtn.Name = "NextSongBtn";
-            this.NextSongBtn.Size = new System.Drawing.Size(75, 23);
+            this.NextSongBtn.Size = new System.Drawing.Size(150, 44);
             this.NextSongBtn.TabIndex = 1;
             this.NextSongBtn.Text = "Next";
             this.NextSongBtn.UseVisualStyleBackColor = true;
+            this.NextSongBtn.Click += new System.EventHandler(this.NextSongBtn_Click_1);
             // 
             // PrevSongBtn
             // 
-            this.PrevSongBtn.Location = new System.Drawing.Point(256, 387);
+            this.PrevSongBtn.Location = new System.Drawing.Point(512, 744);
+            this.PrevSongBtn.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.PrevSongBtn.Name = "PrevSongBtn";
-            this.PrevSongBtn.Size = new System.Drawing.Size(75, 23);
+            this.PrevSongBtn.Size = new System.Drawing.Size(150, 44);
             this.PrevSongBtn.TabIndex = 2;
             this.PrevSongBtn.Text = "Prev";
             this.PrevSongBtn.UseVisualStyleBackColor = true;
@@ -65,12 +69,13 @@ namespace Audioplayer
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1600, 865);
             this.Controls.Add(this.PrevSongBtn);
             this.Controls.Add(this.NextSongBtn);
             this.Controls.Add(this.PlayBtn);
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
