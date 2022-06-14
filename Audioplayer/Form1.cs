@@ -61,13 +61,19 @@ namespace Audioplayer
 
         private void NextSongBtn_Click(object sender, EventArgs e)
         {
+            FirstPly = true;
+            isPlaying = true;
             musicController.NextSong();
 
         }
 
         private void PrevSongBtn_Click(object sender, EventArgs e)
         {
+            FirstPly = true;
+            isPlaying = true;
             musicController.PreviousSong();
+
+
         }
     }
 }
