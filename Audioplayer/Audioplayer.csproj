@@ -52,6 +52,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Music Controllers\wavPlayer.cs" />
     <Compile Include="Music Controllers\Mp3Player.cs" />
     <Compile Include="Music Controllers\MusicController.cs" />
     <Compile Include="Program.cs" />
@@ -84,7 +85,9 @@
   <ItemGroup>
     <Folder Include="Database classes\" />
     <Folder Include="Form classes\" />
-    <Folder Include="TempMusic\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TempMusic\TYLER1 FULL GATLIN GUN-[AudioTrimmer.com].mp3" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
