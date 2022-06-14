@@ -24,5 +24,19 @@ namespace Audioplayer.Music_Controllers
            
             
         }
+        public void PauseAudio(WindowsMediaPlayer _soundPlayer)
+        {
+            soundPlayer = _soundPlayer;
+            
+
+            soundPlayer.controls.pause();
+        }
+        public void UnPause(WindowsMediaPlayer _soundPlayer)
+        {
+            soundPlayer = _soundPlayer;
+
+
+            soundPlayer.controls.play();
+        }
     }
 }
