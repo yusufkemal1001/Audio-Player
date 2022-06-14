@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Media;
+using WMPLib;
 
 namespace Audioplayer.Music_Controllers
 {
      public class MusicController
     {
         System.Media.SoundPlayer soundPlayer = new SoundPlayer();
+        WindowsMediaPlayer mediaPlayer = new WindowsMediaPlayer();
         
         public void Play(string fileName)
         {
@@ -17,7 +19,7 @@ namespace Audioplayer.Music_Controllers
             if (fileType == ".mp3")
             {
                 Mp3Player mp3Player = new Mp3Player();
-                mp3Player.PlayMp3(fileName, soundPlayer);
+                mp3Player.PlayMp3(fileName, mediaPlayer);
             }
             if(fileType == ".wav")
             {

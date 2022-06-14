@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Media;
+using WMPLib;
 
 namespace Audioplayer.Music_Controllers
 {
@@ -13,13 +14,11 @@ namespace Audioplayer.Music_Controllers
         string fileName;
      
         
-        public void PlayMp3(string _fileName, System.Media.SoundPlayer _soundPlayer)
+        public void PlayMp3(string _fileName, WindowsMediaPlayer _soundPlayer)
         {
             soundPlayer = _soundPlayer;
             fileName = _fileName;
-            soundPlayer.SoundLocation = fileName;
-            soundPlayer.
-            soundPlayer.Play();
+           
         }
     }
 }
