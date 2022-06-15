@@ -14,12 +14,13 @@ namespace Audioplayer
 {
     public partial class Form1 : Form
     {
-        Queue queue;
         Music_Controllers.MusicController musicController;
         public string Filepath = @"C:\Users\jaime\source\repos\Audio-Player\Audioplayer\TempMusic";
         public Form1()
         {
             InitializeComponent();
+            QueueListbox.Enabled = false;
+            QueueListbox.Visible = false;
             isPlaying = false;
             musicController = new MusicController();
         }
@@ -34,7 +35,7 @@ namespace Audioplayer
         {
             if (FirstPly)
             {
-                musicController.PlaySong();
+                musicController.PlaySong(this);
                 PlayBtn.Text = "pause";
                 FirstPly = false;
                 isPlaying = !isPlaying;
@@ -59,20 +60,25 @@ namespace Audioplayer
             extentions.DebugOutput(isPlaying.ToString());
         }
 
-        private void NextSongBtn_Click(object sender, EventArgs e)
+        /*private void NextSongBtn_Click(object sender, EventArgs e)
         {
-            FirstPly = true;
-            isPlaying = true;
-            musicController.NextSong();
-
-        }
+            
+        }*/
 
         private void PrevSongBtn_Click(object sender, EventArgs e)
         {
-            FirstPly = true;
+           // FirstPly = true;
             isPlaying = true;
             musicController.PreviousSong();
 
+
+        }
+
+        private void NextSongBtn_Click_1(object sender, EventArgs e)
+        {
+            //FirstPly = true;
+            isPlaying = true;
+            musicController.NextSong();
 
         }
     }

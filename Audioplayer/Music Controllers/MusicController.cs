@@ -12,7 +12,7 @@ namespace Audioplayer.Music_Controllers
         WindowsMediaPlayer mediaPlayer = new WindowsMediaPlayer();
         string currentSong;
         Mp3Player currentPlayer;
-        public void PlaySong()
+        public void PlaySong(Form1 _form)
         {
             MakeQueue();
             Play(queue.QueueList[0]);
@@ -66,7 +66,7 @@ namespace Audioplayer.Music_Controllers
             string fileType = currentSong.Substring(currentSong.Length - 4);
             if (fileType != ".mp3" && fileType != ".aac" && fileType != ".wav")
             {
-
+                return;
             }
             currentPlayer.PauseAudio(mediaPlayer);
         }
@@ -92,6 +92,14 @@ namespace Audioplayer.Music_Controllers
             {
                 extentions.DebugOutput(item);
             }
+        }
+        public void ShuffleQueue()
+        {
+            queue.QueueList.Shuffle();
+        }
+        public void UpdateQueue()
+        {
+
         }
     }
 }
