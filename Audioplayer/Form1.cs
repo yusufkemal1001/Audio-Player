@@ -39,14 +39,17 @@ namespace Audioplayer
                 PlayBtn.Text = "pause";
                 FirstPly = false;
                 isPlaying = !isPlaying;
+                return;
             }
+            musicController.ShowQueue(QueueListbox);
+            musicController.UpdateQueue(false, QueueListbox);
             if (isPlaying)
             {
                 PlayBtn.Text = "play";
 
                 musicController.PauseSong();
                 isPlaying = !isPlaying;
-                
+                return;
             }
             if (!FirstPly)
             {
@@ -54,11 +57,10 @@ namespace Audioplayer
                 PlayBtn.Text = "pause";
 
                 isPlaying = !isPlaying;
-                
+                return;
             }
 
-            musicController.ShowQueue(QueueListbox);
-            musicController.UpdateQueue(false, QueueListbox);
+           
 
             extentions.DebugOutput(isPlaying.ToString());
         }
