@@ -57,10 +57,15 @@ namespace Audioplayer
                 return;
             }
 <<<<<<< HEAD
+<<<<<<< HEAD
             musicController.ShowQueue();
             musicController.UpdateQueue(false, QueueListbox);
 =======
 >>>>>>> 23f18d87c8ad868e60eda5fa2fcc79203cc7e903
+=======
+            QueueListboxShow();
+
+>>>>>>> parent of 1ff71fc (push)
             extentions.DebugOutput(isPlaying.ToString());
         }
 
