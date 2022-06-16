@@ -56,9 +56,6 @@ namespace Audioplayer
                 isPlaying = !isPlaying;
                 return;
             }
-
-            musicController.ShowQueue();
-            musicController.UpdateQueue(false, QueueListbox);
             extentions.DebugOutput(isPlaying.ToString());
         }
 
