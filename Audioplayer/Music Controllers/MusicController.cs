@@ -120,8 +120,7 @@ namespace Audioplayer.Music_Controllers
 
         public void ShowQueue(ListBox listBox)
         {
-            listBox.Enabled = !queueList.Enabled;
-            listBox.Visible = !queueList.Visible;
+            listBox.Visible = !listBox.Visible;
         }
         private void SwitchBool()
         {
