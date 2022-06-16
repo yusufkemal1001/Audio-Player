@@ -56,6 +56,7 @@ namespace Audioplayer
                 isPlaying = !isPlaying;
                 return;
             }
+
             extentions.DebugOutput(isPlaying.ToString());
         }
 
