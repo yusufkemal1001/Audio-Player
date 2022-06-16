@@ -20,7 +20,7 @@ namespace Audioplayer
         {
             InitializeComponent();
             QueueListbox.Visible = false;
-            AllsongListbox.Visible = false;
+            AllsongListbox.Visible = true;
             isPlaying = false;
             musicController = new MusicController();
             musicController.SendComponents(QueueListbox, AllsongListbox);

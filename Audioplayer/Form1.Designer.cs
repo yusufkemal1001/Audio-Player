@@ -80,7 +80,7 @@ namespace Audioplayer
             this.QueueListbox.FormattingEnabled = true;
             this.QueueListbox.Items.AddRange(new object[] {
             "hoi"});
-            this.QueueListbox.Location = new System.Drawing.Point(474, 15);
+            this.QueueListbox.Location = new System.Drawing.Point(638, 12);
             this.QueueListbox.Name = "QueueListbox";
             this.QueueListbox.Size = new System.Drawing.Size(150, 394);
             this.QueueListbox.TabIndex = 4;

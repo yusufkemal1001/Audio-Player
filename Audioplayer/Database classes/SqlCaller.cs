@@ -8,10 +8,10 @@ namespace Audioplayer.Database_classes
 {
     class SqlCaller
     {
-        public List<String> GetAllSongs()
+       /* public List<String> GetAllSongs()
         {
             //add sql querry 
-        }
+        }*/
 
 
     }
