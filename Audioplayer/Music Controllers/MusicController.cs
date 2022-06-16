@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WMPLib;
+using System.Windows.Forms;
 namespace Audioplayer.Music_Controllers
 {
     public class MusicController
@@ -12,6 +13,12 @@ namespace Audioplayer.Music_Controllers
         WindowsMediaPlayer mediaPlayer = new WindowsMediaPlayer();
         string currentSong;
         Mp3Player currentPlayer;
+        ListBox queueList;
+        
+        public void SendComponents(ListBox _queueList, CheckedListBox _allsongList)
+        {
+            queueList = _queueList;
+        }
         public void PlaySong()
         {
             MakeQueue();
@@ -66,7 +73,7 @@ namespace Audioplayer.Music_Controllers
             string fileType = currentSong.Substring(currentSong.Length - 4);
             if (fileType != ".mp3" && fileType != ".aac" && fileType != ".wav")
             {
-
+                return;
             }
             currentPlayer.PauseAudio(mediaPlayer);
         }
@@ -92,6 +99,32 @@ namespace Audioplayer.Music_Controllers
             {
                 extentions.DebugOutput(item);
             }
+        }
+        public void ShuffleQueue()
+        {
+            queue.QueueList.Shuffle();
+        }
+        public void UpdateQueue(bool _reset, ListBox listBox)
+        {
+            if (_reset)
+            {
+                queueList.ResetText();
+            }
+            foreach (var item in queue.QueueList)
+            {
+                listBox.Items.Add(item);
+            }
+            //return queue.QueueList;
+        }
+
+        public void ShowQueue(ListBox listBox)
+        {
+            listBox.Enabled = !queueList.Enabled;
+            listBox.Visible = !queueList.Visible;
+        }
+        private void SwitchBool()
+        {
+           
         }
     }
 }
