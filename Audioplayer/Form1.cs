@@ -19,10 +19,11 @@ namespace Audioplayer
         public Form1()
         {
             InitializeComponent();
-            QueueListbox.Enabled = false;
             QueueListbox.Visible = false;
+            AllsongListbox.Visible = false;
             isPlaying = false;
             musicController = new MusicController();
+            musicController.SendComponents(QueueListbox, AllsongListbox);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -33,21 +34,23 @@ namespace Audioplayer
         bool FirstPly = true;
         private void PlayBtn_Click(object sender, EventArgs e)
         {
+
             if (FirstPly)
             {
-                musicController.PlaySong(this);
+                musicController.PlaySong();
                 PlayBtn.Text = "pause";
                 FirstPly = false;
                 isPlaying = !isPlaying;
-                return;
+              //  return;
             }
+
             if (isPlaying)
             {
                 PlayBtn.Text = "play";
 
                 musicController.PauseSong();
                 isPlaying = !isPlaying;
-                return;
+               // return;
             }
             if (!FirstPly)
             {
@@ -55,8 +58,10 @@ namespace Audioplayer
                 PlayBtn.Text = "pause";
 
                 isPlaying = !isPlaying;
-                return;
+              //  return;
             }
+            QueueListboxShow();
+
             extentions.DebugOutput(isPlaying.ToString());
         }
 
@@ -80,6 +85,10 @@ namespace Audioplayer
             isPlaying = true;
             musicController.NextSong();
 
+        }
+        void QueueListboxShow()
+        {
+            QueueListbox.Visible = true;
         }
     }
 }

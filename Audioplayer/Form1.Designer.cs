@@ -32,7 +32,7 @@ namespace Audioplayer
             this.PlayBtn = new System.Windows.Forms.Button();
             this.NextSongBtn = new System.Windows.Forms.Button();
             this.PrevSongBtn = new System.Windows.Forms.Button();
-            this.PlayListCheckedListbox = new System.Windows.Forms.CheckedListBox();
+            this.AllsongListbox = new System.Windows.Forms.CheckedListBox();
             this.QueueListbox = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
@@ -66,18 +66,21 @@ namespace Audioplayer
             this.PrevSongBtn.UseVisualStyleBackColor = true;
             this.PrevSongBtn.Click += new System.EventHandler(this.PrevSongBtn_Click);
             // 
-            // PlayListCheckedListbox
+            // AllsongListbox
             // 
-            this.PlayListCheckedListbox.FormattingEnabled = true;
-            this.PlayListCheckedListbox.Location = new System.Drawing.Point(638, 12);
-            this.PlayListCheckedListbox.Name = "PlayListCheckedListbox";
-            this.PlayListCheckedListbox.Size = new System.Drawing.Size(150, 394);
-            this.PlayListCheckedListbox.TabIndex = 3;
+            this.AllsongListbox.FormattingEnabled = true;
+            this.AllsongListbox.Location = new System.Drawing.Point(638, 12);
+            this.AllsongListbox.Name = "AllsongListbox";
+            this.AllsongListbox.Size = new System.Drawing.Size(150, 394);
+            this.AllsongListbox.TabIndex = 3;
+            this.AllsongListbox.Visible = false;
             // 
             // QueueListbox
             // 
             this.QueueListbox.FormattingEnabled = true;
-            this.QueueListbox.Location = new System.Drawing.Point(638, 12);
+            this.QueueListbox.Items.AddRange(new object[] {
+            "hoi"});
+            this.QueueListbox.Location = new System.Drawing.Point(474, 15);
             this.QueueListbox.Name = "QueueListbox";
             this.QueueListbox.Size = new System.Drawing.Size(150, 394);
             this.QueueListbox.TabIndex = 4;
@@ -88,7 +91,7 @@ namespace Audioplayer
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.QueueListbox);
-            this.Controls.Add(this.PlayListCheckedListbox);
+            this.Controls.Add(this.AllsongListbox);
             this.Controls.Add(this.PrevSongBtn);
             this.Controls.Add(this.NextSongBtn);
             this.Controls.Add(this.PlayBtn);
@@ -104,7 +107,7 @@ namespace Audioplayer
         private System.Windows.Forms.Button PlayBtn;
         private System.Windows.Forms.Button NextSongBtn;
         private System.Windows.Forms.Button PrevSongBtn;
-        private System.Windows.Forms.CheckedListBox PlayListCheckedListbox;
+        private System.Windows.Forms.CheckedListBox AllsongListbox;
         private System.Windows.Forms.ListBox QueueListbox;
     }
 }
