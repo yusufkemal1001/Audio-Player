@@ -34,7 +34,7 @@ namespace Audioplayer.Music_Controllers
             string fileType = fileName.Substring(fileName.Length - 4);
             if (fileType != ".mp3" && fileType != ".aac" && fileType != ".wav")
             {
-
+                
             }
             currentPlayer.PlayAudio(fileName, mediaPlayer);
             currentSong = fileName;
@@ -89,13 +89,17 @@ namespace Audioplayer.Music_Controllers
             queue = new Queue();
 
           //  queue.AddToQueue(@"C:\Audio-Player\Audioplayer\TempMusic\Auto tune baby crying meme.aac");
-            //queue.AddToQueue(@"C:\Audio-Player\Audioplayer\TempMusic\Goofy ahh sounds.wav");
-            //queue.AddToQueue(@"C:\Audio-Player\Audioplayer\TempMusic\TYLER1 FULL GATLIN GUN-[AudioTrimmer.com].mp3");
+          //queue.AddToQueue(@"C:\Audio-Player\Audioplayer\TempMusic\Goofy ahh sounds.wav");
+          //queue.AddToQueue(@"C:\Audio-Player\Audioplayer\TempMusic\TYLER1 FULL GATLIN GUN-[AudioTrimmer.com].mp3");
+            
+        queue.AddToQueue(@"C:\Users\yusuf\OneDrive\Desktop\Audio-Player\Audioplayer\TempMusic\Auto tune baby crying meme.aac");
+            queue.AddToQueue(@"C:\Users\yusuf\OneDrive\Desktop\Audio-Player\Audioplayer\TempMusic\Goofy ahh sounds.wav");
+            queue.AddToQueue(@"C:\Users\yusuf\OneDrive\Desktop\Audio-Player\Audioplayer\TempMusic\TYLER1 FULL GATLIN GUN-[AudioTrimmer.com].mp3");
 
-            queue.AddToQueue(@"C:\Users\jaime\source\repos\Audio-Player\Audioplayer\TempMusic\Auto tune baby crying meme.aac");
-            queue.AddToQueue(@"C:\Users\jaime\source\repos\Audio-Player\Audioplayer\TempMusic\Goofy ahh sounds.wav");
-            queue.AddToQueue(@"C:\Users\jaime\source\repos\Audio-Player\Audioplayer\TempMusic\TYLER1 FULL GATLIN GUN-[AudioTrimmer.com].mp3");
-            // queue.Shuffle();
+       // queue.AddToQueue(@"C:\Users\jaime\source\repos\Audio-Player\Audioplayer\TempMusic\Auto tune baby crying meme.aac");
+         //   queue.AddToQueue(@"C:\Users\jaime\source\repos\Audio-Player\Audioplayer\TempMusic\Goofy ahh sounds.wav");
+           // queue.AddToQueue(@"C:\Users\jaime\source\repos\Audio-Player\Audioplayer\TempMusic\TYLER1 FULL GATLIN GUN-[AudioTrimmer.com].mp3");
+            //queue.Shuffle();
             foreach (var item in queue.QueueList)
             {
                 extentions.DebugOutput(item);

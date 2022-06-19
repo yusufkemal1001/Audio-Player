@@ -47,7 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="extentions.cs" />
-    <Compile Include="Form1.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
@@ -67,6 +69,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -86,11 +89,25 @@
     <Folder Include="Form classes\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\next.png" />
+    <None Include="Resources\pause.png" />
+    <None Include="Resources\play-buttton.png" />
+    <None Include="Resources\left-arrow.png" />
+    <None Include="Resources\left-arrow %281%29.png" />
+    <None Include="Resources\next %281%29.png" />
     <Content Include="TempMusic\Auto tune baby crying meme.aac" />
     <Content Include="TempMusic\Goofy ahh sounds.wav" />
     <Content Include="TempMusic\TYLER1 FULL GATLIN GUN-[AudioTrimmer.com].mp3" />
   </ItemGroup>
   <ItemGroup>
+    <COMReference Include="AxWMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
     <COMReference Include="MediaPlayer">
       <Guid>{22D6F304-B0F6-11D0-94AB-0080C74C7E95}</Guid>
       <VersionMajor>1</VersionMajor>

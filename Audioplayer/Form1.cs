@@ -16,7 +16,10 @@ namespace Audioplayer
     {
         Queue queue;
         Music_Controllers.MusicController musicController;
-        public string Filepath = @"C:\Users\jaime\source\repos\Audio-Player\Audioplayer\TempMusic";
+        //public string Filepath = @"C:\Users\jaime\source\repos\Audio-Player\Audioplayer\TempMusic";
+        public string Filepath = @"C:\Users\yusuf\OneDrive\Desktop\Audio-Player\Audioplayer\TempMusic";
+
+        
         public Form1()
         {
             InitializeComponent();
@@ -36,7 +39,7 @@ namespace Audioplayer
             if (FirstPly)
             {
                 musicController.PlaySong();
-                PlayBtn.Text = "pause";
+                PlayBtn.BackgroundImage = Image.FromFile(@"C:\Users\yusuf\OneDrive\Desktop\Audio-Player\Audioplayer\Resources\pause.png");
                 FirstPly = false;
                 isPlaying = !isPlaying;
                 return;
@@ -46,6 +49,7 @@ namespace Audioplayer
             if (isPlaying)
             {
                 PlayBtn.Text = "play";
+                PlayBtn.BackgroundImage = Image.FromFile(@"C:\Users\yusuf\OneDrive\Desktop\Audio-Player\Audioplayer\Resources\play-buttton.png");
 
                 musicController.PauseSong();
                 isPlaying = !isPlaying;
@@ -54,7 +58,8 @@ namespace Audioplayer
             if (!FirstPly)
             {
                 musicController.UnPause();
-                PlayBtn.Text = "pause";
+                
+                PlayBtn.BackgroundImage = Image.FromFile(@"C:\Users\yusuf\OneDrive\Desktop\Audio-Player\Audioplayer\Resources\pause.png");
 
                 isPlaying = !isPlaying;
                 return;
@@ -85,6 +90,45 @@ namespace Audioplayer
         private void NextSongBtn_Click_1(object sender, EventArgs e)
         {
             musicController.NextSong();
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (queueRadio.Checked == true)
+            {
+                QueueListbox.Show();
+                AllsongListbox.Hide();
+            }
+            else
+            {
+                QueueListbox.Hide();
+                AllsongListbox.Hide();
+            }
+        }
+
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (allSongsRadio.Checked == true)
+            {
+                QueueListbox.Hide();
+                AllsongListbox.Show();
+            }
+            else
+            {
+                QueueListbox.Show();
+                AllsongListbox.Hide();
+                
+            }
+        }
+
+        private void QueueListbox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void axWindowsMediaPlayer1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
