@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
 using Audioplayer.Music_Controllers;
+using System.Data.SqlClient;
 
 namespace Audioplayer
 {
@@ -129,6 +130,35 @@ namespace Audioplayer
         private void axWindowsMediaPlayer1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void Upload_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "Audio files(mp3, wav, aac) | *.mp3;*.wav;*.aac | Alle Bestanden | *.*"; // file types, that will be allowed to upload 
+            dialog.Multiselect = true; // allow/deny user to upload more than one file at a time
+            if (dialog.ShowDialog() == DialogResult.OK) // if user clicked OK
+            {
+                var path = dialog.FileName; // get name of file
+                using (StreamReader reader = new StreamReader(new FileStream(path, FileMode.Open), new UTF8Encoding())) // do anything you want, e.g. read it
+                {
+
+                    System.Diagnostics.Debug.WriteLine(dialog.FileNames.Length);
+                    SqlConnection con = new SqlConnection("Data Source=OBEJAH-LAPTOP\\SQLEXPRESS;Initial Catalog=AudioFiles;Integrated Security=True");
+                    con.Open();
+
+                    for (int i = 0; i < dialog.FileNames.Length; i++)
+                    {
+                        System.Diagnostics.Debug.WriteLine(dialog.FileNames[i]);
+                        SqlCommand cmd = new SqlCommand("insert into XD (Path) values (@Path)", con);
+                        cmd.Parameters.AddWithValue("@Path", dialog.FileNames[i] + Environment.NewLine);
+                        cmd.ExecuteNonQuery();
+
+                    }
+                    con.Close();
+
+                }
+            }
         }
     }
 }

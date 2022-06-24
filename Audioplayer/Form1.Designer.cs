@@ -36,6 +36,7 @@ namespace Audioplayer
             this.PrevSongBtn = new System.Windows.Forms.Button();
             this.NextSongBtn = new System.Windows.Forms.Button();
             this.PlayBtn = new System.Windows.Forms.Button();
+            this.Upload = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // AllsongListbox
@@ -124,11 +125,22 @@ namespace Audioplayer
             this.PlayBtn.UseVisualStyleBackColor = true;
             this.PlayBtn.Click += new System.EventHandler(this.PlayBtn_Click);
             // 
+            // Upload
+            // 
+            this.Upload.Location = new System.Drawing.Point(225, 178);
+            this.Upload.Name = "Upload";
+            this.Upload.Size = new System.Drawing.Size(75, 23);
+            this.Upload.TabIndex = 8;
+            this.Upload.Text = "Upload";
+            this.Upload.UseVisualStyleBackColor = true;
+            this.Upload.Click += new System.EventHandler(this.Upload_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Upload);
             this.Controls.Add(this.PlayBtn);
             this.Controls.Add(this.allSongsRadio);
             this.Controls.Add(this.queueRadio);
@@ -153,6 +165,7 @@ namespace Audioplayer
         private System.Windows.Forms.ListBox QueueListbox;
         private System.Windows.Forms.RadioButton queueRadio;
         private System.Windows.Forms.RadioButton allSongsRadio;
+        private System.Windows.Forms.Button Upload;
     }
 }
 
