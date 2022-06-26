@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[XD]
+(
+	[Id] INT NOT NULL PRIMARY KEY, 
+    [Path] NCHAR(255) NULL
+)

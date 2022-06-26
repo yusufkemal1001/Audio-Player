@@ -144,7 +144,8 @@ namespace Audioplayer
                 {
 
                     System.Diagnostics.Debug.WriteLine(dialog.FileNames.Length);
-                    SqlConnection con = new SqlConnection("Data Source=OBEJAH-LAPTOP\\SQLEXPRESS;Initial Catalog=AudioFiles;Integrated Security=True");
+                    //SqlConnection con = new SqlConnection("Data Source=OBEJAH-LAPTOP\\SQLEXPRESS;Initial Catalog=AudioFiles;Integrated Security=True");
+                    SqlConnection con = new SqlConnection("Data Source=DESKTOP-VQ0G86A\\SQLEXPRESS;Initial Catalog=audioPlayer;Integrated Security=True");
                     con.Open();
 
                     for (int i = 0; i < dialog.FileNames.Length; i++)
@@ -159,6 +160,21 @@ namespace Audioplayer
 
                 }
             }
+        }
+
+        private void axWindowsMediaPlayer1_Enter_1(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            mediaPlayer.URL = @"C:\Users\yusuf\OneDrive\Desktop\VID_20211206_123615~2.mp4";
+        }
+
+        private void AllsongListbox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

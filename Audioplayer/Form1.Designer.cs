@@ -38,24 +38,27 @@ namespace Audioplayer
             this.NextSongBtn = new System.Windows.Forms.Button();
             this.PlayBtn = new System.Windows.Forms.Button();
             this.Upload = new System.Windows.Forms.Button();
-            this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
-            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.mediaPlayer = new AxWMPLib.AxWindowsMediaPlayer();
+            ((System.ComponentModel.ISupportInitialize)(this.mediaPlayer)).BeginInit();
             this.SuspendLayout();
             // 
             // AllsongListbox
             // 
             this.AllsongListbox.FormattingEnabled = true;
-            this.AllsongListbox.Location = new System.Drawing.Point(619, 46);
+            this.AllsongListbox.Location = new System.Drawing.Point(449, 46);
             this.AllsongListbox.Name = "AllsongListbox";
-            this.AllsongListbox.Size = new System.Drawing.Size(169, 364);
+            this.AllsongListbox.Size = new System.Drawing.Size(169, 379);
             this.AllsongListbox.TabIndex = 3;
+            this.AllsongListbox.SelectedIndexChanged += new System.EventHandler(this.AllsongListbox_SelectedIndexChanged);
             // 
             // QueueListbox
             // 
             this.QueueListbox.FormattingEnabled = true;
-            this.QueueListbox.Location = new System.Drawing.Point(445, 46);
+            this.QueueListbox.Location = new System.Drawing.Point(624, 46);
             this.QueueListbox.Name = "QueueListbox";
-            this.QueueListbox.Size = new System.Drawing.Size(168, 368);
+            this.QueueListbox.Size = new System.Drawing.Size(168, 381);
             this.QueueListbox.TabIndex = 4;
             this.QueueListbox.SelectedIndexChanged += new System.EventHandler(this.QueueListbox_SelectedIndexChanged);
             // 
@@ -138,21 +141,43 @@ namespace Audioplayer
             this.Upload.UseVisualStyleBackColor = true;
             this.Upload.Click += new System.EventHandler(this.Upload_Click);
             // 
-            // axWindowsMediaPlayer1
+            // button1
             // 
-            this.axWindowsMediaPlayer1.Enabled = true;
-            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(25, 46);
-            this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
-            this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
-            this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(379, 343);
-            this.axWindowsMediaPlayer1.TabIndex = 9;
+            this.button1.Location = new System.Drawing.Point(140, 414);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(234, 414);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 11;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // mediaPlayer
+            // 
+            this.mediaPlayer.Enabled = true;
+            this.mediaPlayer.Location = new System.Drawing.Point(36, 46);
+            this.mediaPlayer.Name = "mediaPlayer";
+            this.mediaPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("mediaPlayer.OcxState")));
+            this.mediaPlayer.Size = new System.Drawing.Size(379, 343);
+            this.mediaPlayer.TabIndex = 9;
+            this.mediaPlayer.Enter += new System.EventHandler(this.axWindowsMediaPlayer1_Enter_1);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.axWindowsMediaPlayer1);
+            this.ClientSize = new System.Drawing.Size(829, 490);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.mediaPlayer);
             this.Controls.Add(this.Upload);
             this.Controls.Add(this.PlayBtn);
             this.Controls.Add(this.allSongsRadio);
@@ -164,7 +189,7 @@ namespace Audioplayer
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mediaPlayer)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -180,7 +205,9 @@ namespace Audioplayer
         private System.Windows.Forms.RadioButton queueRadio;
         private System.Windows.Forms.RadioButton allSongsRadio;
         private System.Windows.Forms.Button Upload;
-        private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer1;
+        private AxWMPLib.AxWindowsMediaPlayer mediaPlayer;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
 
