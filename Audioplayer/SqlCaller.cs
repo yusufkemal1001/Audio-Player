@@ -12,9 +12,14 @@ namespace Audioplayer
 {
     public class SqlCaller
     {
+        SqlConnection con;
+        public void CreateConnection()
+        {
+            con = new SqlConnection("Server=localhost\\SQLEXPRESS01;Database=audioPlayer;Trusted_Connection=True;");
+        }
         public DataTable GetAllPlaylist()
         {
-            SqlConnection con = new SqlConnection("Server=localhost\\SQLEXPRESS01;Database=audioPlayer;Trusted_Connection=True;");
+            
             con.Open();
 
             using (con)
@@ -28,12 +33,7 @@ namespace Audioplayer
             }
         }
 
-        private void addPlaylist_Click(object sender, EventArgs e)
-        {
-            Form3 fm = new Form3();
-            fm.ShowDialog();
-        }
-
+      
         public void addPlaylist(string input)
         {
             SqlConnection con = new SqlConnection("Data Source=DESKTOP-VQ0G86A\\SQLEXPRESS;Initial Catalog=audioPlayer;Integrated Security=True");
@@ -45,6 +45,15 @@ namespace Audioplayer
                 
                 //con.Close();
             }
+        }
+        public List<string> GetAllSongs()
+        {
+            List<string> songs = new List<string>();
+
+
+
+            return songs;
+
         }
     
     }

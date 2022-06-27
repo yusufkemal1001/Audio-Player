@@ -19,7 +19,7 @@ namespace Audioplayer
         Music_Controllers.MusicController musicController;
         //public string Filepath = @"C:\Users\jaime\source\repos\Audio-Player\Audioplayer\TempMusic";
         public string Filepath = @"C:\Users\yusuf\OneDrive\Desktop\Audio-Player\Audioplayer\TempMusic";
-
+        SqlCaller SqlCaller = new SqlCaller();
         
         public Form1()
         {
@@ -28,10 +28,19 @@ namespace Audioplayer
             QueueListbox.Visible = false;
             musicController = new MusicController();
         }
+        void LoadAllSongs()
+        {
+            List<string> songs = new List<string>();
+            songs = SqlCaller.GetAllSongs();
 
+            foreach (string item in songs)
+            {
+                AllsongListbox.Items.Add(item);
+            }
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
-           
+            SqlCaller.CreateConnection();
         }
         bool isPlaying;
         bool FirstPly = true;
@@ -179,7 +188,7 @@ namespace Audioplayer
         private void openPlaylist_Click(object sender, EventArgs e)
         {
         
-            Form2 fm = new Form2();
+            Form2 fm = new Form2(SqlCaller);
             fm.ShowDialog();
 
             

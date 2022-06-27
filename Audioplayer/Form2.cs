@@ -13,10 +13,10 @@ namespace Audioplayer
     public partial class Form2 : Form
     {
         SqlCaller SqlCaller;
-        public Form2()
+        public Form2(SqlCaller caller)
         {
             InitializeComponent();
-            SqlCaller = new SqlCaller();
+            SqlCaller = caller;
             LoadPlaylist();
         }
 
