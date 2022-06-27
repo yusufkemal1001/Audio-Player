@@ -36,7 +36,7 @@ namespace Audioplayer
             this.allSongsRadio = new System.Windows.Forms.RadioButton();
             this.Upload = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.addToQueueBtn = new System.Windows.Forms.Button();
             this.mediaPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             this.openPlaylist = new System.Windows.Forms.Button();
             this.NextSongBtn = new System.Windows.Forms.Button();
@@ -107,14 +107,15 @@ namespace Audioplayer
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // addToQueueBtn
             // 
-            this.button2.Location = new System.Drawing.Point(368, 455);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.addToQueueBtn.Location = new System.Drawing.Point(368, 455);
+            this.addToQueueBtn.Name = "addToQueueBtn";
+            this.addToQueueBtn.Size = new System.Drawing.Size(75, 23);
+            this.addToQueueBtn.TabIndex = 11;
+            this.addToQueueBtn.Text = "+ Queue";
+            this.addToQueueBtn.UseVisualStyleBackColor = true;
+            this.addToQueueBtn.Click += new System.EventHandler(this.addToQueueBtn_Click);
             // 
             // mediaPlayer
             // 
@@ -187,7 +188,7 @@ namespace Audioplayer
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(829, 490);
             this.Controls.Add(this.openPlaylist);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.addToQueueBtn);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.mediaPlayer);
             this.Controls.Add(this.Upload);
@@ -215,7 +216,7 @@ namespace Audioplayer
         private System.Windows.Forms.Button Upload;
         private AxWMPLib.AxWindowsMediaPlayer mediaPlayer;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button addToQueueBtn;
         private System.Windows.Forms.Button openPlaylist;
         private System.Windows.Forms.Button NextSongBtn;
         private System.Windows.Forms.Button PrevSongBtn;

@@ -121,7 +121,7 @@ namespace Audioplayer
                 
             }
         }
-
+       
         private void QueueListbox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -187,6 +187,20 @@ namespace Audioplayer
 
 
 
+        }
+
+        private void addToQueueBtn_Click(object sender, EventArgs e)
+        {
+            if(AllsongListbox.SelectedItems.Count <= 0)
+            {
+                return;
+            }
+            ListBox SelectedItemsAll = new ListBox();
+            foreach (var song in AllsongListbox.SelectedItems)
+            {
+                SelectedItemsAll.Items.Add(song);
+            }
+            musicController.UpdateQueue(false, SelectedItemsAll);
         }
     }
 }

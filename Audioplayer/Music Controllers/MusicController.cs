@@ -92,9 +92,9 @@ namespace Audioplayer.Music_Controllers
           //queue.AddToQueue(@"C:\Audio-Player\Audioplayer\TempMusic\Goofy ahh sounds.wav");
           //queue.AddToQueue(@"C:\Audio-Player\Audioplayer\TempMusic\TYLER1 FULL GATLIN GUN-[AudioTrimmer.com].mp3");
             
-        queue.AddToQueue(@"C:\Users\yusuf\OneDrive\Desktop\Audio-Player\Audioplayer\TempMusic\Auto tune baby crying meme.aac");
-            queue.AddToQueue(@"C:\Users\yusuf\OneDrive\Desktop\Audio-Player\Audioplayer\TempMusic\Goofy ahh sounds.wav");
-            queue.AddToQueue(@"C:\Users\yusuf\OneDrive\Desktop\Audio-Player\Audioplayer\TempMusic\TYLER1 FULL GATLIN GUN-[AudioTrimmer.com].mp3");
+       // queue.AddToQueue(@"C:\Users\yusuf\OneDrive\Desktop\Audio-Player\Audioplayer\TempMusic\Auto tune baby crying meme.aac");
+        //    queue.AddToQueue(@"C:\Users\yusuf\OneDrive\Desktop\Audio-Player\Audioplayer\TempMusic\Goofy ahh sounds.wav");
+        //    queue.AddToQueue(@"C:\Users\yusuf\OneDrive\Desktop\Audio-Player\Audioplayer\TempMusic\TYLER1 FULL GATLIN GUN-[AudioTrimmer.com].mp3");
 
        // queue.AddToQueue(@"C:\Users\jaime\source\repos\Audio-Player\Audioplayer\TempMusic\Auto tune baby crying meme.aac");
          //   queue.AddToQueue(@"C:\Users\jaime\source\repos\Audio-Player\Audioplayer\TempMusic\Goofy ahh sounds.wav");
