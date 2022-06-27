@@ -15,7 +15,7 @@ namespace Audioplayer
 {
     public partial class Form1 : Form
     {
-        Queue queue;
+        //Queue queue;
         Music_Controllers.MusicController musicController;
         //public string Filepath = @"C:\Users\jaime\source\repos\Audio-Player\Audioplayer\TempMusic";
         public string Filepath = @"C:\Users\yusuf\OneDrive\Desktop\Audio-Player\Audioplayer\TempMusic";
@@ -31,7 +31,9 @@ namespace Audioplayer
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+           AllsongListbox.Items.Add(@"C:\Users\jaime\source\repos\Audio-Player\Audioplayer\TempMusic\Auto tune baby crying meme.aac");
+            AllsongListbox.Items.Add(@"C:\Users\jaime\source\repos\Audio-Player\Audioplayer\TempMusic\Goofy ahh sounds.wav");
+            AllsongListbox.Items.Add(@"C:\Users\jaime\source\repos\Audio-Player\Audioplayer\TempMusic\TYLER1 FULL GATLIN GUN-[AudioTrimmer.com].mp3");
         }
         bool isPlaying;
         bool FirstPly = true;
@@ -40,17 +42,16 @@ namespace Audioplayer
             if (FirstPly)
             {
                 musicController.PlaySong();
-                PlayBtn.BackgroundImage = Image.FromFile(@"C:\Users\yusuf\OneDrive\Desktop\Audio-Player\Audioplayer\Resources\pause.png");
+              //  PlayBtn.BackgroundImage = Image.FromFile(@"C:\Users\yusuf\OneDrive\Desktop\Audio-Player\Audioplayer\Resources\pause.png");
                 FirstPly = false;
                 isPlaying = !isPlaying;
                 return;
             }
             musicController.ShowQueue(QueueListbox);
-            musicController.UpdateQueue(false, QueueListbox);
             if (isPlaying)
             {
                 PlayBtn.Text = "play";
-                PlayBtn.BackgroundImage = Image.FromFile(@"C:\Users\yusuf\OneDrive\Desktop\Audio-Player\Audioplayer\Resources\play-buttton.png");
+               // PlayBtn.BackgroundImage = Image.FromFile(@"C:\Users\yusuf\OneDrive\Desktop\Audio-Player\Audioplayer\Resources\play-buttton.png");
 
                 musicController.PauseSong();
                 isPlaying = !isPlaying;
@@ -60,7 +61,7 @@ namespace Audioplayer
             {
                 musicController.UnPause();
                 
-                PlayBtn.BackgroundImage = Image.FromFile(@"C:\Users\yusuf\OneDrive\Desktop\Audio-Player\Audioplayer\Resources\pause.png");
+            //    PlayBtn.BackgroundImage = Image.FromFile(@"C:\Users\yusuf\OneDrive\Desktop\Audio-Player\Audioplayer\Resources\pause.png");
 
                 isPlaying = !isPlaying;
                 return;
@@ -195,10 +196,16 @@ namespace Audioplayer
             {
                 return;
             }
-            ListBox SelectedItemsAll = new ListBox();
-            foreach (var song in AllsongListbox.SelectedItems)
+            List<string> SelectedItemsAll = new List<string>();
+            for (int i = 0; i < AllsongListbox.CheckedItems.Count; i++)
             {
-                SelectedItemsAll.Items.Add(song);
+                SelectedItemsAll.Add(AllsongListbox.CheckedItems[i].ToString());
+            }
+            extentions.DebugOutput(AllsongListbox.Items.Count.ToString());
+            if (!musicController.Isplaying)
+            {
+                musicController.MakeQueue(SelectedItemsAll);
+                return;
             }
             musicController.UpdateQueue(false, SelectedItemsAll);
         }
