@@ -12,28 +12,23 @@ namespace Audioplayer
 {
     public partial class Form2 : Form
     {
+        SqlCaller SqlCaller;
         public Form2()
         {
             InitializeComponent();
-            
+            SqlCaller = new SqlCaller();
+            LoadPlaylist();
         }
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            gridbind();
+           
             
         }
-        private void gridbind()
+        private void LoadPlaylist()
         {
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-VQ0G86A\\SQLEXPRESS;Initial Catalog=audioPlayer;Integrated Security=True");
-
-            using (con)
-            {
-                con.Open();
-                SqlCommand cmd = new SqlCommand("select * from Playlist", con);
-                SqlDataReader reader = cmd.ExecuteReader();
-                DataTable dt = new DataTable();
-                dt.Load(reader);
+            DataTable dt = SqlCaller.GetAllPlaylist();
+                
                 dataGridViewPlaylists.DataSource = dt;
                 dataGridViewPlaylists.AllowUserToAddRows = false;
                 DataGridViewCheckBoxColumn checkboxcol = new DataGridViewCheckBoxColumn();
@@ -41,8 +36,8 @@ namespace Audioplayer
                 checkboxcol.Name = "check1";
                 checkboxcol.HeaderText = "";
                 dataGridViewPlaylists.Columns.Insert(0, checkboxcol);
-                //con.Close();
-            }
+               
+            
         }
 
         private void addPlaylist_Click(object sender, EventArgs e)
@@ -53,15 +48,10 @@ namespace Audioplayer
 
         private void addPlaylist_Click_1(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-VQ0G86A\\SQLEXPRESS;Initial Catalog=audioPlayer;Integrated Security=True");
-            using (con)
-            {
-                con.Open();
-                SqlCommand cmd = new SqlCommand("insert into Playlist values('"+textBox1.Text+"')", con);
-                SqlDataReader reader = cmd.ExecuteReader();
+            SqlCaller.addPlaylist(textBox1.Text);
                 dataGridViewPlaylists.Refresh();
                 //con.Close();
-            }
+            
             textBox1.Clear();
         }
 

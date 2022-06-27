@@ -31,9 +31,7 @@ namespace Audioplayer
 
         private void Form1_Load(object sender, EventArgs e)
         {
-           AllsongListbox.Items.Add(@"C:\Users\jaime\source\repos\Audio-Player\Audioplayer\TempMusic\Auto tune baby crying meme.aac");
-            AllsongListbox.Items.Add(@"C:\Users\jaime\source\repos\Audio-Player\Audioplayer\TempMusic\Goofy ahh sounds.wav");
-            AllsongListbox.Items.Add(@"C:\Users\jaime\source\repos\Audio-Player\Audioplayer\TempMusic\TYLER1 FULL GATLIN GUN-[AudioTrimmer.com].mp3");
+           
         }
         bool isPlaying;
         bool FirstPly = true;
@@ -208,6 +206,11 @@ namespace Audioplayer
                 return;
             }
             musicController.UpdateQueue(false, SelectedItemsAll);
+        }
+
+        private void loadFiles()
+        {
+
         }
     }
 }
