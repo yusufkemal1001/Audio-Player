@@ -15,7 +15,7 @@ namespace Audioplayer
         SqlConnection con;
         public void CreateConnection()
         {
-            con = new SqlConnection("Server=localhost\\SQLEXPRESS01;Database=audioPlayer;Trusted_Connection=True;");
+            con = new SqlConnection("Server=OBEJAH-LAPTOP\\SQLEXPRESS;Database=audioPlayer;Trusted_Connection=True;");
         }
         public DataTable GetAllPlaylist()
         {
@@ -24,7 +24,7 @@ namespace Audioplayer
 
             using (con)
             {
-                SqlCommand cmd = new SqlCommand("select * from Playlist", con);
+                SqlCommand cmd = new SqlCommand("select * from Playlists", con);
                 SqlDataReader reader = cmd.ExecuteReader();
                 DataTable dt = new DataTable();
                 dt.Load(reader);
@@ -36,12 +36,10 @@ namespace Audioplayer
       
         public void addPlaylist(string input)
         {
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-VQ0G86A\\SQLEXPRESS;Initial Catalog=audioPlayer;Integrated Security=True");
             using (con)
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("insert into Playlist values('" + input + "')", con);
-                SqlDataReader reader = cmd.ExecuteReader();
+                SqlCommand cmd = new SqlCommand("insert into Playlists values('" + input + "')", con);
                 
                 //con.Close();
             }
@@ -49,12 +47,41 @@ namespace Audioplayer
         public List<string> GetAllSongs()
         {
             List<string> songs = new List<string>();
+            string querry = "select * from XD";
+            con.Open();
 
 
 
+            SqlCommand cmd = new SqlCommand(querry, con);
+            cmd.CommandType = CommandType.Text;
+                
+
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            songs.Add(reader.GetString(1));
+                        }
+                    }
+
+            con.Close();
             return songs;
 
         }
-    
+    public void UploadFiles(FileDialog dialog)
+        {
+            con.Open();
+
+            for (int i = 0; i < dialog.FileNames.Length; i++)
+            {
+                System.Diagnostics.Debug.WriteLine(dialog.FileNames[i]);
+                SqlCommand cmd = new SqlCommand("insert into XD (Path) values (@Path)", con);
+                cmd.Parameters.AddWithValue("@Path", dialog.FileNames[i] + Environment.NewLine);
+                cmd.ExecuteNonQuery();
+
+            }
+            con.Close();
+        }
     }
 }

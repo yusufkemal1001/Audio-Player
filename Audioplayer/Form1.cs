@@ -27,6 +27,8 @@ namespace Audioplayer
             isPlaying = false;
             QueueListbox.Visible = false;
             musicController = new MusicController();
+            SqlCaller.CreateConnection();
+            LoadAllSongs();
         }
         void LoadAllSongs()
         {
@@ -40,7 +42,7 @@ namespace Audioplayer
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            SqlCaller.CreateConnection();
+           
         }
         bool isPlaying;
         bool FirstPly = true;
@@ -153,23 +155,14 @@ namespace Audioplayer
 
                     System.Diagnostics.Debug.WriteLine(dialog.FileNames.Length);
                     //SqlConnection con = new SqlConnection("Data Source=OBEJAH-LAPTOP\\SQLEXPRESS;Initial Catalog=AudioFiles;Integrated Security=True");
-                    SqlConnection con = new SqlConnection("Data Source=DESKTOP-VQ0G86A\\SQLEXPRESS;Initial Catalog=audioPlayer;Integrated Security=True");
-                    con.Open();
-
-                    for (int i = 0; i < dialog.FileNames.Length; i++)
-                    {
-                        System.Diagnostics.Debug.WriteLine(dialog.FileNames[i]);
-                        SqlCommand cmd = new SqlCommand("insert into XD (Path) values (@Path)", con);
-                        cmd.Parameters.AddWithValue("@Path", dialog.FileNames[i] + Environment.NewLine);
-                        cmd.ExecuteNonQuery();
-
-                    }
-                    con.Close();
+                    SqlCaller.UploadFiles(dialog);
 
                 }
+                    SqlCaller.GetAllSongs();
+                
+                }
             }
-        }
-
+        
         private void axWindowsMediaPlayer1_Enter_1(object sender, EventArgs e)
         {
            
