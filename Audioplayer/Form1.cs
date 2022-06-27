@@ -176,5 +176,17 @@ namespace Audioplayer
         {
 
         }
+
+        private void openPlaylist_Click(object sender, EventArgs e)
+        {
+        
+            Form2 fm = new Form2();
+            fm.ShowDialog();
+
+            
+
+
+
+        }
     }
 }

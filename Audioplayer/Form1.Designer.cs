@@ -34,13 +34,14 @@ namespace Audioplayer
             this.QueueListbox = new System.Windows.Forms.ListBox();
             this.queueRadio = new System.Windows.Forms.RadioButton();
             this.allSongsRadio = new System.Windows.Forms.RadioButton();
-            this.PrevSongBtn = new System.Windows.Forms.Button();
-            this.NextSongBtn = new System.Windows.Forms.Button();
-            this.PlayBtn = new System.Windows.Forms.Button();
             this.Upload = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.mediaPlayer = new AxWMPLib.AxWindowsMediaPlayer();
+            this.openPlaylist = new System.Windows.Forms.Button();
+            this.NextSongBtn = new System.Windows.Forms.Button();
+            this.PrevSongBtn = new System.Windows.Forms.Button();
+            this.PlayBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.mediaPlayer)).BeginInit();
             this.SuspendLayout();
             // 
@@ -86,54 +87,9 @@ namespace Audioplayer
             this.allSongsRadio.UseVisualStyleBackColor = true;
             this.allSongsRadio.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
             // 
-            // PrevSongBtn
-            // 
-            this.PrevSongBtn.BackgroundImage = global::Audioplayer.Properties.Resources.left_arrow;
-            this.PrevSongBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PrevSongBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.PrevSongBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
-            this.PrevSongBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
-            this.PrevSongBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PrevSongBtn.Location = new System.Drawing.Point(36, 412);
-            this.PrevSongBtn.Name = "PrevSongBtn";
-            this.PrevSongBtn.Size = new System.Drawing.Size(29, 26);
-            this.PrevSongBtn.TabIndex = 2;
-            this.PrevSongBtn.UseVisualStyleBackColor = true;
-            this.PrevSongBtn.Click += new System.EventHandler(this.PrevSongBtn_Click);
-            // 
-            // NextSongBtn
-            // 
-            this.NextSongBtn.BackgroundImage = global::Audioplayer.Properties.Resources.next;
-            this.NextSongBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.NextSongBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.NextSongBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
-            this.NextSongBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
-            this.NextSongBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.NextSongBtn.Location = new System.Drawing.Point(93, 412);
-            this.NextSongBtn.Name = "NextSongBtn";
-            this.NextSongBtn.Size = new System.Drawing.Size(29, 26);
-            this.NextSongBtn.TabIndex = 1;
-            this.NextSongBtn.UseVisualStyleBackColor = true;
-            this.NextSongBtn.Click += new System.EventHandler(this.NextSongBtn_Click_1);
-            // 
-            // PlayBtn
-            // 
-            this.PlayBtn.BackgroundImage = global::Audioplayer.Properties.Resources.play_buttton;
-            this.PlayBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PlayBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.PlayBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
-            this.PlayBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
-            this.PlayBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PlayBtn.Location = new System.Drawing.Point(71, 412);
-            this.PlayBtn.Name = "PlayBtn";
-            this.PlayBtn.Size = new System.Drawing.Size(25, 26);
-            this.PlayBtn.TabIndex = 0;
-            this.PlayBtn.UseVisualStyleBackColor = true;
-            this.PlayBtn.Click += new System.EventHandler(this.PlayBtn_Click);
-            // 
             // Upload
             // 
-            this.Upload.Location = new System.Drawing.Point(329, 414);
+            this.Upload.Location = new System.Drawing.Point(717, 455);
             this.Upload.Name = "Upload";
             this.Upload.Size = new System.Drawing.Size(75, 23);
             this.Upload.TabIndex = 8;
@@ -143,7 +99,7 @@ namespace Audioplayer
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(140, 414);
+            this.button1.Location = new System.Drawing.Point(449, 455);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 10;
@@ -153,7 +109,7 @@ namespace Audioplayer
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(234, 414);
+            this.button2.Location = new System.Drawing.Point(368, 455);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 11;
@@ -170,11 +126,67 @@ namespace Audioplayer
             this.mediaPlayer.TabIndex = 9;
             this.mediaPlayer.Enter += new System.EventHandler(this.axWindowsMediaPlayer1_Enter_1);
             // 
+            // openPlaylist
+            // 
+            this.openPlaylist.Location = new System.Drawing.Point(47, 455);
+            this.openPlaylist.Name = "openPlaylist";
+            this.openPlaylist.Size = new System.Drawing.Size(75, 23);
+            this.openPlaylist.TabIndex = 12;
+            this.openPlaylist.Text = "Playlists";
+            this.openPlaylist.UseVisualStyleBackColor = true;
+            this.openPlaylist.Click += new System.EventHandler(this.openPlaylist_Click);
+            // 
+            // NextSongBtn
+            // 
+            this.NextSongBtn.BackgroundImage = global::Audioplayer.Properties.Resources.next;
+            this.NextSongBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.NextSongBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.NextSongBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.NextSongBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.NextSongBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.NextSongBtn.Location = new System.Drawing.Point(93, 412);
+            this.NextSongBtn.Name = "NextSongBtn";
+            this.NextSongBtn.Size = new System.Drawing.Size(29, 26);
+            this.NextSongBtn.TabIndex = 1;
+            this.NextSongBtn.UseVisualStyleBackColor = true;
+            this.NextSongBtn.Click += new System.EventHandler(this.NextSongBtn_Click_1);
+            // 
+            // PrevSongBtn
+            // 
+            this.PrevSongBtn.BackgroundImage = global::Audioplayer.Properties.Resources.left_arrow;
+            this.PrevSongBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PrevSongBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.PrevSongBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.PrevSongBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.PrevSongBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PrevSongBtn.Location = new System.Drawing.Point(36, 412);
+            this.PrevSongBtn.Name = "PrevSongBtn";
+            this.PrevSongBtn.Size = new System.Drawing.Size(29, 26);
+            this.PrevSongBtn.TabIndex = 2;
+            this.PrevSongBtn.UseVisualStyleBackColor = true;
+            this.PrevSongBtn.Click += new System.EventHandler(this.PrevSongBtn_Click);
+            // 
+            // PlayBtn
+            // 
+            this.PlayBtn.BackgroundImage = global::Audioplayer.Properties.Resources.play_buttton;
+            this.PlayBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PlayBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.PlayBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.PlayBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.PlayBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PlayBtn.Location = new System.Drawing.Point(71, 412);
+            this.PlayBtn.Name = "PlayBtn";
+            this.PlayBtn.Size = new System.Drawing.Size(25, 26);
+            this.PlayBtn.TabIndex = 0;
+            this.PlayBtn.UseVisualStyleBackColor = true;
+            this.PlayBtn.Click += new System.EventHandler(this.PlayBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(829, 490);
+            this.Controls.Add(this.openPlaylist);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.mediaPlayer);
@@ -196,10 +208,6 @@ namespace Audioplayer
         }
 
         #endregion
-
-        private System.Windows.Forms.Button PlayBtn;
-        private System.Windows.Forms.Button NextSongBtn;
-        private System.Windows.Forms.Button PrevSongBtn;
         private System.Windows.Forms.CheckedListBox AllsongListbox;
         private System.Windows.Forms.ListBox QueueListbox;
         private System.Windows.Forms.RadioButton queueRadio;
@@ -208,6 +216,10 @@ namespace Audioplayer
         private AxWMPLib.AxWindowsMediaPlayer mediaPlayer;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button openPlaylist;
+        private System.Windows.Forms.Button NextSongBtn;
+        private System.Windows.Forms.Button PrevSongBtn;
+        private System.Windows.Forms.Button PlayBtn;
     }
 }
 
