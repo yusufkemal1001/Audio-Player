@@ -32,6 +32,7 @@ namespace Audioplayer
         }
         void LoadAllSongs()
         {
+            AllsongListbox.Items.Clear();
             List<string> songs = new List<string>();
             songs = SqlCaller.GetAllSongs();
 
@@ -157,8 +158,9 @@ namespace Audioplayer
                     //SqlConnection con = new SqlConnection("Data Source=OBEJAH-LAPTOP\\SQLEXPRESS;Initial Catalog=AudioFiles;Integrated Security=True");
                     SqlCaller.UploadFiles(dialog);
 
+                    LoadAllSongs();
                 }
-                    SqlCaller.GetAllSongs();
+                    
                 
                 }
             }
