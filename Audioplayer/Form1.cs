@@ -27,8 +27,10 @@ namespace Audioplayer
             isPlaying = false;
             QueueListbox.Visible = false;
             musicController = new MusicController();
+            musicController.SendComponents(mediaPlayer);
             SqlCaller.CreateConnection();
             LoadAllSongs();
+            
         }
         void LoadAllSongs()
         {
@@ -212,6 +214,8 @@ namespace Audioplayer
             }
             musicController.UpdateQueue(SelectedItemsAll);
             //mediaPlayer.URL=
+            musicController.UpdateQueue(SelectedItemsAll);
+            
         }
 
         private void loadFiles()

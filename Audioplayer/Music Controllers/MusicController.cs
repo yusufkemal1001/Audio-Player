@@ -12,20 +12,19 @@ namespace Audioplayer.Music_Controllers
     {
         Queue queue;
         public bool Isplaying = false;
-        WindowsMediaPlayer mediaPlayer = new WindowsMediaPlayer();
         string currentSong;
-        Mp3Player currentPlayer;
+       // Mp3Player currentPlayer;
         ListBox queueList;
-        
-        public void SendComponents(ListBox _queueList, CheckedListBox _allsongList)
+        AxWMPLib.AxWindowsMediaPlayer mediaPlayer;
+        public void SendComponents(AxWMPLib.AxWindowsMediaPlayer _mediaPlayer)
         {
-            queueList = _queueList;
+            mediaPlayer = _mediaPlayer;
         }
         public void PlaySong()
         {
-            Play(queue.QueueList[0]);
+            LoadSong(queue.QueueList[0]);
         }
-        private void Play(string fileName)
+        private void LoadSong(string fileName)
         {
             if (queue == null)
             {
@@ -35,11 +34,12 @@ namespace Audioplayer.Music_Controllers
             {
                 
             }
-            currentPlayer.PlayAudio(fileName, mediaPlayer);
+  
             currentSong = fileName;
+            
         }
 
-        public void NextSong()
+      /*  public void NextSong()
         {
             int currentInt = queue.QueueList.IndexOf(currentSong);
             int nextint = currentInt + 1;
@@ -79,13 +79,10 @@ namespace Audioplayer.Music_Controllers
         }
         public void UnPause() {
             currentPlayer.UnPause(mediaPlayer);
-        }
+        }*/
         public void MakeQueue(List<string> list)
         {
-           
-
-            Mp3Player Player = new Mp3Player();
-            currentPlayer = Player;
+            
 
             queue = new Queue();
             extentions.DebugOutput(list.Count.ToString());
@@ -103,16 +100,19 @@ namespace Audioplayer.Music_Controllers
         public void ShuffleQueue()
         {
             queue.QueueList.Shuffle();
+            UpdateQueue(queue.QueueList, true);
         }
         public void UpdateQueue(List<string> listBox, bool _reset = false )
         {
             if (_reset)
             {
                 queueList.ResetText();
+                mediaPlayer.currentPlaylist.clear();
             }
             foreach (var item in listBox)
             {
                 queue.AddToQueue(item);
+                mediaPlayer.currentPlaylist.appendItem(mediaPlayer.newMedia(item));
             }
             //return queue.QueueList;
         }
@@ -124,6 +124,10 @@ namespace Audioplayer.Music_Controllers
         private void SwitchBool()
         {
            
+        }
+        void MakeAxPlayslist()
+        {
+            mediaPlayer.currentPlaylist = mediaPlayer.newPlaylist("QueueList", "");
         }
     }
 }
