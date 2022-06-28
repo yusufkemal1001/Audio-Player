@@ -26,9 +26,13 @@ namespace Audioplayer
             InitializeComponent();
             isPlaying = false;
             QueueListbox.Visible = false;
-            musicController = new MusicController();
-            musicController.SendComponents(mediaPlayer);
+
+            musicController = new MusicController(mediaPlayer);
             
+          
+            musicController = new MusicController(mediaPlayer);
+            
+
             LoadAllSongs();
             QueueListbox.DataSource = musicController.queueListbox;
 
