@@ -15,7 +15,8 @@ namespace Audioplayer
         SqlConnection con;
         public void CreateConnection()
         {
-            con = new SqlConnection("Server=OBEJAH-LAPTOP\\SQLEXPRESS;Database=audioPlayer;Trusted_Connection=True;");
+            //con = new SqlConnection("Server=OBEJAH-LAPTOP\\SQLEXPRESS;Database=audioPlayer;Trusted_Connection=True;");
+            con = new SqlConnection("Server=localhost\\SQLEXPRESS01;Database=audioPlayer;Trusted_Connection=True;");
         }
         public DataTable GetAllPlaylist()
         {
