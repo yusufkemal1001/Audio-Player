@@ -25,12 +25,12 @@ namespace Audioplayer
         {
             InitializeComponent();
             isPlaying = false;
-            QueueListbox.Visible = false;
+            //QueueListbox.Visible = false;
             musicController = new MusicController(mediaPlayer);
             
 
             LoadAllSongs();
-            QueueListbox.DataSource = musicController.queueListbox;
+           
 
 
         }
@@ -211,17 +211,20 @@ namespace Audioplayer
             extentions.DebugOutput(AllsongListbox.Items.Count.ToString());
             if (!musicController.Isplaying)
             {
-                musicController.MakeQueue(SelectedItemsAll);
+                musicController.MakeQueue();
+                musicController.UpdateQueue(SelectedItemsAll);
+                ListQueueUpdate();
                 return;
             }
             //mediaPlayer.URL=
             musicController.UpdateQueue(SelectedItemsAll);
-            QueueListbox.Refresh();
+            ListQueueUpdate();
         }
 
-        void QueueIteralte()
+        void ListQueueUpdate()
         {
-
+            QueueListbox.DataSource = musicController.GetQueue();
+            QueueListbox.Refresh();
         }
     }
 }
