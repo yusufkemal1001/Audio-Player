@@ -28,7 +28,7 @@ namespace Audioplayer
             QueueListbox.Visible = false;
             musicController = new MusicController();
             musicController.SendComponents(mediaPlayer);
-            SqlCaller.CreateConnection();
+            
             LoadAllSongs();
             QueueListbox.DataSource = musicController.queueListbox;
 

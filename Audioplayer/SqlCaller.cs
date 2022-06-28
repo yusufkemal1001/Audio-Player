@@ -12,7 +12,13 @@ namespace Audioplayer
 {
     public class SqlCaller
     {
-        SqlConnection con;
+        private SqlConnection con;
+
+        public SqlCaller()
+        {
+            con = new SqlConnection("Server=localhost\\SQLEXPRESS01;Database=audioPlayer;Trusted_Connection=True;");
+        }
+
         public void CreateConnection()
         {
             //con = new SqlConnection("Server=OBEJAH-LAPTOP\\SQLEXPRESS;Database=audioPlayer;Trusted_Connection=True;");
