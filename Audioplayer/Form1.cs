@@ -219,7 +219,7 @@ namespace Audioplayer
             QueueListbox.Refresh();
         }
 
-        private void loadFiles()
+        void QueueIteralte()
         {
 
         }

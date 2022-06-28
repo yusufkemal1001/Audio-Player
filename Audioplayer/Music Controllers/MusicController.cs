@@ -14,7 +14,7 @@ namespace Audioplayer.Music_Controllers
         public bool Isplaying = false;
         //string currentSong;
         // Mp3Player currentPlayer;
-        public IList<string> queueListbox;
+        public IList<string> queueListbox = new List<string>();
         AxWMPLib.AxWindowsMediaPlayer mediaPlayer;
         public MusicController(AxWMPLib.AxWindowsMediaPlayer _mediaPlayer)
         {
@@ -82,7 +82,7 @@ namespace Audioplayer.Music_Controllers
         }*/
         public void MakeQueue(List<string> list)
         {
-            
+            MakeAxPlayslist();
 
             queue = new Queue();
             extentions.DebugOutput(list.Count.ToString());
@@ -131,5 +131,6 @@ namespace Audioplayer.Music_Controllers
         {
             mediaPlayer.currentPlaylist = mediaPlayer.newPlaylist("QueueList", "");
         }
+        
     }
 }
