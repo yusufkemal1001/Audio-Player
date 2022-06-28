@@ -212,7 +212,6 @@ namespace Audioplayer
                 musicController.MakeQueue(SelectedItemsAll);
                 return;
             }
-            musicController.UpdateQueue(SelectedItemsAll);
             //mediaPlayer.URL=
             musicController.UpdateQueue(SelectedItemsAll);
             

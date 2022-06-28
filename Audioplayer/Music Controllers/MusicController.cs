@@ -12,13 +12,14 @@ namespace Audioplayer.Music_Controllers
     {
         Queue queue;
         public bool Isplaying = false;
-        string currentSong;
-       // Mp3Player currentPlayer;
-        ListBox queueList;
+        //string currentSong;
+        // Mp3Player currentPlayer;
+        ListBox queueListbox;
         AxWMPLib.AxWindowsMediaPlayer mediaPlayer;
-        public void SendComponents(AxWMPLib.AxWindowsMediaPlayer _mediaPlayer)
+        public void SendComponents(AxWMPLib.AxWindowsMediaPlayer _mediaPlayer, ListBox _listbox)
         {
             mediaPlayer = _mediaPlayer;
+            queueListbox = _listbox;
         }
         public void PlaySong()
         {
@@ -35,7 +36,7 @@ namespace Audioplayer.Music_Controllers
                 
             }
   
-            currentSong = fileName;
+            //currentSong = fileName;
             
         }
 
@@ -106,7 +107,7 @@ namespace Audioplayer.Music_Controllers
         {
             if (_reset)
             {
-                queueList.ResetText();
+                queueListbox.ResetText();
                 mediaPlayer.currentPlaylist.clear();
             }
             foreach (var item in listBox)
@@ -114,6 +115,7 @@ namespace Audioplayer.Music_Controllers
                 queue.AddToQueue(item);
                 mediaPlayer.currentPlaylist.appendItem(mediaPlayer.newMedia(item));
             }
+            queueListbox.DataSource = queue;
             //return queue.QueueList;
         }
 
