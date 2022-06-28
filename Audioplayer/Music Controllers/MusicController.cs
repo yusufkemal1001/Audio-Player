@@ -16,7 +16,7 @@ namespace Audioplayer.Music_Controllers
         // Mp3Player currentPlayer;
         public IList<string> queueListbox;
         AxWMPLib.AxWindowsMediaPlayer mediaPlayer;
-        public void SendComponents(AxWMPLib.AxWindowsMediaPlayer _mediaPlayer)
+        public MusicController(AxWMPLib.AxWindowsMediaPlayer _mediaPlayer)
         {
             mediaPlayer = _mediaPlayer;
         }
