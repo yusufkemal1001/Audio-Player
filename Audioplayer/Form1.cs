@@ -172,7 +172,7 @@ namespace Audioplayer
 
         private void button1_Click(object sender, EventArgs e)
         {
-            mediaPlayer.URL = @"C:\Users\yusuf\OneDrive\Desktop\VID_20211206_123615~2.mp4";
+            mediaPlayer.URL = @"C:\Users\Yusuf Kemal Ozturk\Downloads\sorgu.mp3";
         }
 
         private void AllsongListbox_SelectedIndexChanged(object sender, EventArgs e)
@@ -202,6 +202,7 @@ namespace Audioplayer
             for (int i = 0; i < AllsongListbox.CheckedItems.Count; i++)
             {
                 SelectedItemsAll.Add(AllsongListbox.CheckedItems[i].ToString());
+
             }
             extentions.DebugOutput(AllsongListbox.Items.Count.ToString());
             if (!musicController.Isplaying)
@@ -209,7 +210,8 @@ namespace Audioplayer
                 musicController.MakeQueue(SelectedItemsAll);
                 return;
             }
-            musicController.UpdateQueue(false, SelectedItemsAll);
+            musicController.UpdateQueue(SelectedItemsAll);
+            //mediaPlayer.URL=
         }
 
         private void loadFiles()

@@ -37,11 +37,11 @@ namespace Audioplayer
             this.Upload = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.addToQueueBtn = new System.Windows.Forms.Button();
-            this.mediaPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             this.openPlaylist = new System.Windows.Forms.Button();
             this.NextSongBtn = new System.Windows.Forms.Button();
             this.PrevSongBtn = new System.Windows.Forms.Button();
             this.PlayBtn = new System.Windows.Forms.Button();
+            this.mediaPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             ((System.ComponentModel.ISupportInitialize)(this.mediaPlayer)).BeginInit();
             this.SuspendLayout();
             // 
@@ -117,16 +117,6 @@ namespace Audioplayer
             this.addToQueueBtn.UseVisualStyleBackColor = true;
             this.addToQueueBtn.Click += new System.EventHandler(this.addToQueueBtn_Click);
             // 
-            // mediaPlayer
-            // 
-            this.mediaPlayer.Enabled = true;
-            this.mediaPlayer.Location = new System.Drawing.Point(36, 46);
-            this.mediaPlayer.Name = "mediaPlayer";
-            this.mediaPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("mediaPlayer.OcxState")));
-            this.mediaPlayer.Size = new System.Drawing.Size(379, 343);
-            this.mediaPlayer.TabIndex = 9;
-            this.mediaPlayer.Enter += new System.EventHandler(this.axWindowsMediaPlayer1_Enter_1);
-            // 
             // openPlaylist
             // 
             this.openPlaylist.Location = new System.Drawing.Point(47, 455);
@@ -181,6 +171,16 @@ namespace Audioplayer
             this.PlayBtn.TabIndex = 0;
             this.PlayBtn.UseVisualStyleBackColor = true;
             this.PlayBtn.Click += new System.EventHandler(this.PlayBtn_Click);
+            // 
+            // mediaPlayer
+            // 
+            this.mediaPlayer.Enabled = true;
+            this.mediaPlayer.Location = new System.Drawing.Point(36, 46);
+            this.mediaPlayer.Name = "mediaPlayer";
+            this.mediaPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("mediaPlayer.OcxState")));
+            this.mediaPlayer.Size = new System.Drawing.Size(379, 343);
+            this.mediaPlayer.TabIndex = 9;
+            this.mediaPlayer.Enter += new System.EventHandler(this.axWindowsMediaPlayer1_Enter_1);
             // 
             // Form1
             // 

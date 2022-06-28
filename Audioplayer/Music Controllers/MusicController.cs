@@ -104,7 +104,7 @@ namespace Audioplayer.Music_Controllers
         {
             queue.QueueList.Shuffle();
         }
-        public void UpdateQueue(bool _reset, List<string> listBox)
+        public void UpdateQueue(List<string> listBox, bool _reset = false )
         {
             if (_reset)
             {

@@ -25,7 +25,7 @@ namespace Audioplayer
 
             using (con)
             {
-                SqlCommand cmd = new SqlCommand("select * from Playlists", con);
+                SqlCommand cmd = new SqlCommand("select * from Playlist", con);
                 SqlDataReader reader = cmd.ExecuteReader();
                 DataTable dt = new DataTable();
                 dt.Load(reader);
