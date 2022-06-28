@@ -65,13 +65,13 @@ namespace Audioplayer
                 PlayBtn.Text = "play";
                // PlayBtn.BackgroundImage = Image.FromFile(@"C:\Users\yusuf\OneDrive\Desktop\Audio-Player\Audioplayer\Resources\play-buttton.png");
 
-                musicController.PauseSong();
+               // musicController.PauseSong();
                 isPlaying = !isPlaying;
                 return;
             }
             if (!FirstPly)
             {
-                musicController.UnPause();
+               // musicController.UnPause();
                 
             //    PlayBtn.BackgroundImage = Image.FromFile(@"C:\Users\yusuf\OneDrive\Desktop\Audio-Player\Audioplayer\Resources\pause.png");
 
@@ -88,7 +88,7 @@ namespace Audioplayer
         {
             FirstPly = true;
             isPlaying = true;
-            musicController.NextSong();
+          //  musicController.NextSong();
 
         }
 
@@ -96,14 +96,14 @@ namespace Audioplayer
         {
             FirstPly = true;
             isPlaying = true;
-            musicController.PreviousSong();
+         //   musicController.PreviousSong();
 
 
         }
 
         private void NextSongBtn_Click_1(object sender, EventArgs e)
         {
-            musicController.NextSong();
+          //  musicController.NextSong();
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
