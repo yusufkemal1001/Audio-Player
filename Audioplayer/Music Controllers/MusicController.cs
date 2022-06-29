@@ -16,9 +16,11 @@ namespace Audioplayer.Music_Controllers
         // Mp3Player currentPlayer;
         //public IList<string> queueListbox = new List<string>();
         AxWMPLib.AxWindowsMediaPlayer mediaPlayer;
+        public List<string> SongUrls = new List<string>();
         public MusicController(AxWMPLib.AxWindowsMediaPlayer _mediaPlayer)
         {
             mediaPlayer = _mediaPlayer;
+            
         }
         public void PlaySong()
         {
@@ -96,20 +98,20 @@ namespace Audioplayer.Music_Controllers
         public void ShuffleQueue()
         {
             queue.QueueList.Shuffle();
-            UpdateQueue(queue.QueueList, true);
+            UpdateQueue(queue.QueueList ,true);
         }
-        public void UpdateQueue(List<string> listBox, bool _reset = false )
+        public void UpdateQueue(List<string> selected, bool _reset = false )
         {
             if (_reset)
             {
                 //queueListbox.Clear();
                 mediaPlayer.currentPlaylist.clear();
             }
-            foreach (var item in listBox)
+            for (int i = 0; i < selected.Count; i++)
             {
-                queue.AddToQueue(item);
+                queue.AddToQueue(selected[i]);
                 //queueListbox.Add(item);
-                mediaPlayer.currentPlaylist.appendItem(mediaPlayer.newMedia(item));
+                mediaPlayer.currentPlaylist.appendItem(mediaPlayer.newMedia(SongUrls[i]));
             }
            
             //return queue.QueueList;
@@ -130,6 +132,14 @@ namespace Audioplayer.Music_Controllers
         public string[] GetQueue()
         {
             return queue.QueueList.ToArray();
+        }
+        public void SendUrlToList(List<string> songs)
+        {
+            
+           SongUrls = songs;
+         
+            
+            extentions.DebugOutput(SongUrls.Count.ToString());
         }
     }
 }

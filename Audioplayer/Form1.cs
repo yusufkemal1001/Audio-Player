@@ -13,6 +13,7 @@ using System.Data.SqlClient;
 
 namespace Audioplayer
 {
+
     public partial class Form1 : Form
     {
         //Queue queue;
@@ -20,37 +21,58 @@ namespace Audioplayer
         //public string Filepath = @"C:\Users\jaime\source\repos\Audio-Player\Audioplayer\TempMusic";
         public string Filepath = @"C:\Users\yusuf\OneDrive\Desktop\Audio-Player\Audioplayer\TempMusic";
         SqlCaller SqlCaller = new SqlCaller();
-        
+
+        bool isPlaying;
+        bool FirstPly = true;
+
         public Form1()
         {
             InitializeComponent();
             isPlaying = false;
             //QueueListbox.Visible = false;
             musicController = new MusicController(mediaPlayer);
-            
 
+
+            musicController.SendUrlToList(SqlCaller.GetAllSongs());
+
+
+            LoadAllPlaylists();
             LoadAllSongs();
-           
-
-
         }
         void LoadAllSongs()
         {
             AllsongListbox.Items.Clear();
-            List<string> songs = new List<string>();
-            songs = SqlCaller.GetAllSongs();
+                
+            getSongName(musicController.SongUrls);
 
-            foreach (string item in songs)
+            
+        }
+        void getSongName(List<string>SongList)
+        {
+
+            foreach (string item in SongList)
             {
-                AllsongListbox.Items.Add(item);
+                string lastPart = item.Split('\\').Last();
+                AllsongListbox.Items.Add(lastPart);
             }
+        }
+        void LoadAllPlaylists()
+        {
+
+            SqlCaller.GetAllPlaylist();
+            PlaylistListbox.Items.Clear();
+           
+
+            PlaylistListbox.DataSource = SqlCaller.GetAllPlaylist();
+            PlaylistListbox.DisplayMember = "Playlist";
+            //PlaylistListbox.Items.Add(playlists);
+            
         }
         private void Form1_Load(object sender, EventArgs e)
         {
            
         }
-        bool isPlaying;
-        bool FirstPly = true;
+        
         private void PlayBtn_Click(object sender, EventArgs e)
         {
             if (FirstPly)
@@ -64,7 +86,7 @@ namespace Audioplayer
             musicController.ShowQueue(QueueListbox);
             if (isPlaying)
             {
-                PlayBtn.Text = "play";
+                //PlayBtn.Text = "play";
                // PlayBtn.BackgroundImage = Image.FromFile(@"C:\Users\yusuf\OneDrive\Desktop\Audio-Player\Audioplayer\Resources\play-buttton.png");
 
                // musicController.PauseSong();
@@ -112,13 +134,13 @@ namespace Audioplayer
         {
             if (queueRadio.Checked == true)
             {
-                QueueListbox.Show();
+                PlaylistListbox.Show();
                 AllsongListbox.Hide();
             }
             else
             {
-                QueueListbox.Hide();
-                AllsongListbox.Hide();
+                PlaylistListbox.Hide();
+                AllsongListbox.Show();
             }
         }
 
@@ -126,12 +148,12 @@ namespace Audioplayer
         {
             if (allSongsRadio.Checked == true)
             {
-                QueueListbox.Hide();
+                PlaylistListbox.Hide();
                 AllsongListbox.Show();
             }
             else
             {
-                QueueListbox.Show();
+                PlaylistListbox.Show();
                 AllsongListbox.Hide();
                 
             }
@@ -162,7 +184,7 @@ namespace Audioplayer
                     //SqlConnection con = new SqlConnection("Data Source=OBEJAH-LAPTOP\\SQLEXPRESS;Initial Catalog=AudioFiles;Integrated Security=True");
                     SqlCaller.UploadFiles(dialog);
 
-                    LoadAllSongs();
+                    musicController.SendUrlToList(SqlCaller.GetAllSongs());
                 }
                     
                 
@@ -214,17 +236,32 @@ namespace Audioplayer
                 musicController.MakeQueue();
                 musicController.UpdateQueue(SelectedItemsAll);
                 ListQueueUpdate();
+                Uncheck();
                 return;
             }
             //mediaPlayer.URL=
             musicController.UpdateQueue(SelectedItemsAll);
             ListQueueUpdate();
+            Uncheck();
         }
 
         void ListQueueUpdate()
         {
             QueueListbox.DataSource = musicController.GetQueue();
             QueueListbox.Refresh();
+        }
+        
+        void Uncheck()
+        {
+            for (int i = 0; i < AllsongListbox.Items.Count; i++)
+            {
+               
+                
+                    AllsongListbox.SetItemChecked(i, false);
+                    
+                
+            }
+            
         }
     }
 }

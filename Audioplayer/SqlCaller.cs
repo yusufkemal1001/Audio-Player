@@ -26,31 +26,37 @@ namespace Audioplayer
         }
         public DataTable GetAllPlaylist()
         {
+            DataTable result = new DataTable();
             
+            CreateConnection();
             con.Open();
 
             using (con)
             {
                 SqlCommand cmd = new SqlCommand("select * from Playlist", con);
                 SqlDataReader reader = cmd.ExecuteReader();
-                DataTable dt = new DataTable();
-                dt.Load(reader);
-                return dt;
+                
+                result.Load(reader);
                 //con.Close();
             }
+            return result;
         }
+
 
       
         public void addPlaylist(string input)
         {
+            CreateConnection();
             using (con)
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("insert into Playlists values('" + input + "')", con);
-                
+                SqlCommand cmd = new SqlCommand("insert into Playlist values('" + input + "')", con);
+                SqlDataReader reader = cmd.ExecuteReader();
+
                 //con.Close();
             }
         }
+       
         public List<string> GetAllSongs()
         {
             List<string> songs = new List<string>();
@@ -76,7 +82,35 @@ namespace Audioplayer
             return songs;
 
         }
-    public void UploadFiles(FileDialog dialog)
+
+        public List<string> GetAllPlaylistSongs()
+        {
+            List<string> songs = new List<string>();
+            string querry = "select * from XD";
+            con.Open();
+
+
+
+            SqlCommand cmd = new SqlCommand(querry, con);
+            cmd.CommandType = CommandType.Text;
+
+
+
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    songs.Add(reader.GetString(1));
+                }
+            }
+
+            con.Close();
+            return songs;
+
+        }
+
+
+        public void UploadFiles(FileDialog dialog)
         {
             con.Open();
 
