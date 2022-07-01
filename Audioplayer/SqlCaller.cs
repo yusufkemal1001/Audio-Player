@@ -27,17 +27,16 @@ namespace Audioplayer
         public DataTable GetAllPlaylist()
         {
             DataTable result = new DataTable();
-            
             CreateConnection();
             con.Open();
 
             using (con)
             {
-                SqlCommand cmd = new SqlCommand("select * from Playlist", con);
+                SqlCommand cmd = new SqlCommand("select * from Playlists", con);
                 SqlDataReader reader = cmd.ExecuteReader();
                 
                 result.Load(reader);
-                //con.Close();
+                con.Close();
             }
             return result;
         }
@@ -46,22 +45,23 @@ namespace Audioplayer
       
         public void addPlaylist(string input)
         {
-            CreateConnection();
             using (con)
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("insert into Playlist values('" + input + "')", con);
+                SqlCommand cmd = new SqlCommand("insert into Playlists values('" + input + "')", con);
                 SqlDataReader reader = cmd.ExecuteReader();
 
-                //con.Close();
+                con.Close();
             }
         }
        
         public List<string> GetAllSongs()
         {
+            CreateConnection();
+            con.Open();
             List<string> songs = new List<string>();
             string querry = "select * from XD";
-            con.Open();
+            
 
 
 
@@ -83,15 +83,16 @@ namespace Audioplayer
 
         }
 
-        public List<string> GetAllPlaylistSongs()
+        public List<int> GetAllPlaylistSongsId(int _ID)
         {
-            List<string> songs = new List<string>();
-            string querry = "select * from XD";
+            List<int> songs = new List<int>();
+            string querry = $"select * from PlaylistContent where playlistID ='{_ID}'";
             con.Open();
 
 
 
             SqlCommand cmd = new SqlCommand(querry, con);
+            cmd.Connection = con;
             cmd.CommandType = CommandType.Text;
 
 
@@ -100,7 +101,8 @@ namespace Audioplayer
             {
                 while (reader.Read())
                 {
-                    songs.Add(reader.GetString(1));
+                    var str = reader.GetInt32(2);
+                    songs.Add(str);
                 }
             }
 
@@ -108,10 +110,35 @@ namespace Audioplayer
             return songs;
 
         }
+       public List<string> GetSongNameById(List<int> _ID)
+        {
 
+            con.Open();
+            List<string> url = new List<string>();
+            foreach (var item in _ID)
+            {
+            SqlCommand cmd = new SqlCommand($"select Path from XD where songID = '{item}'");
+            cmd.Connection = con;
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                    url.Add(reader.GetString(0));
+
+                    }
+                }
+
+
+                   
+
+            }
+            con.Close();
+            return url;
+        }
 
         public void UploadFiles(FileDialog dialog)
         {
+            CreateConnection();
             con.Open();
 
             for (int i = 0; i < dialog.FileNames.Length; i++)
@@ -123,6 +150,105 @@ namespace Audioplayer
 
             }
             con.Close();
+        }
+        public void UpdatePlaylistName(string _name, int _ID)
+        {
+            con.Open();
+
+            SqlCommand cmd = new SqlCommand($"update Playlists set Playlist = '{_name}' where PlayListID = '{_ID}'", con);
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+        public void AddSongsToPlayList(int _playListID, List<string> _url)
+        {
+            con.Open();
+
+            foreach (int item in GetSongIdsByName(_url))
+            {
+                SqlCommand cmd = new SqlCommand($"insert into PlaylistContent values('{_playListID}', '{item}')");
+                cmd.Connection = con;
+                cmd.ExecuteNonQuery();
+            }
+            con.Close();
+        }
+        public List<int> GetSongIdsByName(List<string> _url)
+        {
+            List<int> songs = new List<int>();
+            foreach (string item in _url)
+            {
+                
+               
+                SqlCommand cmd = new SqlCommand($"select songID from XD where Path Like '%{item}%'");
+                cmd.Connection = con;
+                cmd.CommandType = CommandType.Text;
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var peepee = reader.GetInt32(0);
+                        songs.Add(peepee);
+
+                    }
+                }
+
+            }
+
+            return songs;
+
+        }
+        public void DeleteSongFromPlatlist(List<int> _url)
+        {
+            con.Open();
+            foreach (var item in _url)
+            {
+                SqlCommand cmd = new SqlCommand($"delete from PlaylistContent where songID = '{item}' ");
+                cmd.Connection = con;
+                cmd.ExecuteNonQuery();
+            }
+            con.Close();
+
+        }
+        public void DeletePlaylist(int _PlaylistId)
+        {
+            con.Open();
+            SqlCommand cmd = new SqlCommand($"delete from PlaylistContent where playlistID = '{_PlaylistId}' ");
+            cmd.Connection = con;
+            cmd.ExecuteNonQuery();
+
+            SqlCommand cmd2 = new SqlCommand($"delete from Playlists where playlistID = '{_PlaylistId}' ");
+            cmd2.Connection = con;
+            cmd2.ExecuteNonQuery();
+            con.Close();
+        }
+        public int GetPlaylistIDByName(string _name)
+        {
+            
+            CreateConnection();
+            con.Open();
+            int Id=0;
+            SqlCommand cmd = new SqlCommand($"select playlistID from Playlists where Playlist='{_name}';");
+            cmd.Connection = con;
+            SqlDataReader dr = cmd.ExecuteReader();
+            if (dr.Read())
+            {
+                Id = dr.GetInt32(0);
+
+                
+                
+            }
+            con.Close();
+            return Id;
+            /*using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                
+                    
+
+                
+            }*/
+
+
+
+
         }
     }
 }

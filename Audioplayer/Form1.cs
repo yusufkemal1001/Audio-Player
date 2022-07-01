@@ -34,10 +34,12 @@ namespace Audioplayer
 
 
             musicController.SendUrlToList(SqlCaller.GetAllSongs());
-
+            List<string> peepee = SqlCaller.GetAllSongs();
 
             LoadAllPlaylists();
             LoadAllSongs();
+            musicController.MakeQueue();
+
         }
         void LoadAllSongs()
         {
@@ -220,25 +222,37 @@ namespace Audioplayer
 
         private void addToQueueBtn_Click(object sender, EventArgs e)
         {
+            if(queueRadio.Checked == true)
+            {
+                var selectedI = PlaylistListbox.SelectedItem;
+                string selected = PlaylistListbox.GetItemText(selectedI);
+
+                musicController.UpdateQueue(SqlCaller.GetSongNameById(SqlCaller.GetAllPlaylistSongsId(SqlCaller.GetPlaylistIDByName(selected))));
+                ListQueueUpdate();
+
+            }
             if(AllsongListbox.SelectedItems.Count <= 0)
             {
                 return;
             }
             List<string> SelectedItemsAll = new List<string>();
-            for (int i = 0; i < AllsongListbox.CheckedItems.Count; i++)
+            for (int i = 0; i < AllsongListbox.Items.Count; i++)
             {
-                SelectedItemsAll.Add(AllsongListbox.CheckedItems[i].ToString());
+                if (AllsongListbox.GetItemCheckState(i) == CheckState.Checked)
+                {
+                    extentions.DebugOutput(i.ToString());
+                    SelectedItemsAll.Add(AllsongListbox.Items[i].ToString());
+                }
 
             }
             extentions.DebugOutput(AllsongListbox.Items.Count.ToString());
-            if (!musicController.Isplaying)
+            /*if (!musicController.Isplaying)
             {
-                musicController.MakeQueue();
                 musicController.UpdateQueue(SelectedItemsAll);
                 ListQueueUpdate();
                 Uncheck();
                 return;
-            }
+            }*/
             //mediaPlayer.URL=
             musicController.UpdateQueue(SelectedItemsAll);
             ListQueueUpdate();
@@ -253,14 +267,7 @@ namespace Audioplayer
         
         void Uncheck()
         {
-            for (int i = 0; i < AllsongListbox.Items.Count; i++)
-            {
-               
-                
-                    AllsongListbox.SetItemChecked(i, false);
-                    
-                
-            }
+            LoadAllSongs();
             
         }
     }

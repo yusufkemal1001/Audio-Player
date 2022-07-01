@@ -23,11 +23,11 @@ namespace Audioplayer
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            LoadPlaylist();
+            //LoadPlaylist();
             CreateRows();
             
         }
-        private void LoadPlaylist()
+        public void LoadPlaylist()
         {
             DataTable dt = SqlCaller.GetAllPlaylist();
                 
@@ -83,9 +83,10 @@ namespace Audioplayer
 
         private void dataGridViewPlaylists_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-           PlayslistInt = (int)dataGridViewPlaylists[0, e.RowIndex].Value;
-            Form3 fm = new Form3(SqlCaller);
+            PlayslistInt = (int)dataGridViewPlaylists[0, e.RowIndex].Value;
+            Form3 fm = new Form3(SqlCaller, PlayslistInt, this);
             fm.textBox1.Text = (string)dataGridViewPlaylists[1, e.RowIndex].Value;
+            
             fm.ShowDialog();
         }
    

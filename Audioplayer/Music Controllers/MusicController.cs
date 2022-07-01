@@ -114,7 +114,6 @@ namespace Audioplayer.Music_Controllers
                 mediaPlayer.currentPlaylist.appendItem(mediaPlayer.newMedia(SongUrls[i]));
             }
            
-            //return queue.QueueList;
         }
 
         public void ShowQueue(ListBox listBox)

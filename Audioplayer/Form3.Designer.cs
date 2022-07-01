@@ -56,6 +56,7 @@
             this.deletePlaylistBtn.TabIndex = 1;
             this.deletePlaylistBtn.Text = "Delete Playlist";
             this.deletePlaylistBtn.UseVisualStyleBackColor = false;
+            this.deletePlaylistBtn.Click += new System.EventHandler(this.deletePlaylistBtn_Click);
             // 
             // textBox1
             // 
@@ -99,6 +100,7 @@
             this.delSongsPlaylist.TabIndex = 6;
             this.delSongsPlaylist.Text = "Remove files from playlist";
             this.delSongsPlaylist.UseVisualStyleBackColor = true;
+            this.delSongsPlaylist.Click += new System.EventHandler(this.delSongsPlaylist_Click);
             // 
             // updateName
             // 
