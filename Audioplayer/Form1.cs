@@ -240,6 +240,7 @@ namespace Audioplayer
             {
                 if (AllsongListbox.GetItemCheckState(i) == CheckState.Checked)
                 {
+                    
                     extentions.DebugOutput(i.ToString());
                     SelectedItemsAll.Add(AllsongListbox.Items[i].ToString());
                 }
@@ -269,6 +270,11 @@ namespace Audioplayer
         {
             LoadAllSongs();
             
+        }
+
+        private void PlaylistListbox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
