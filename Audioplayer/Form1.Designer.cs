@@ -144,6 +144,7 @@ namespace Audioplayer
             this.PlaylistListbox.Size = new System.Drawing.Size(168, 381);
             this.PlaylistListbox.TabIndex = 13;
             this.PlaylistListbox.Visible = false;
+            this.PlaylistListbox.SelectedIndexChanged += new System.EventHandler(this.PlaylistListbox_SelectedIndexChanged);
             // 
             // Form1
             // 
