@@ -109,9 +109,10 @@ namespace Audioplayer.Music_Controllers
             }
             for (int i = 0; i < selected.Count; i++)
             {
+              
+                string addsong = SongUrls.Where(newsong => newsong.Contains(selected[i])).FirstOrDefault();
                 queue.AddToQueue(selected[i]);
-                //queueListbox.Add(item);
-                mediaPlayer.currentPlaylist.appendItem(mediaPlayer.newMedia(SongUrls[i]));
+                mediaPlayer.currentPlaylist.appendItem(mediaPlayer.newMedia(addsong));
             }
            
         }
