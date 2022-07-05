@@ -53,12 +53,13 @@
             this.dataGridViewPlaylists.MultiSelect = false;
             this.dataGridViewPlaylists.Name = "dataGridViewPlaylists";
             this.dataGridViewPlaylists.ReadOnly = true;
+            this.dataGridViewPlaylists.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dataGridViewPlaylists.RowHeadersVisible = false;
             this.dataGridViewPlaylists.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridViewPlaylists.ShowEditingIcon = false;
             this.dataGridViewPlaylists.Size = new System.Drawing.Size(305, 280);
             this.dataGridViewPlaylists.TabIndex = 1;
-            this.dataGridViewPlaylists.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPlaylists_CellContentClick);
-            this.dataGridViewPlaylists.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPlaylists_CellContentDoubleClick);
+            this.dataGridViewPlaylists.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPlaylists_CellContentDoubleClick_1);
             // 
             // textBox1
             // 
@@ -66,6 +67,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(173, 20);
             this.textBox1.TabIndex = 2;
+            this.textBox1.WordWrap = false;
             // 
             // Form2
             // 
@@ -77,7 +79,6 @@
             this.Controls.Add(this.addPlaylist);
             this.Name = "Form2";
             this.Text = "Form2";
-            this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlaylists)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

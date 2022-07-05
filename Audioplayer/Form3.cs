@@ -29,7 +29,6 @@ namespace Audioplayer
             LoadAllsongs();
             form = _form;
             loadAllPlsongs();
-            //textBox1.Text=playli
         }
         void getSongName(List<string> SongList)
         {
@@ -41,17 +40,6 @@ namespace Audioplayer
             }
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form3_Load(object sender, EventArgs e)
-        {
-            
-            
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             List<string> addSongs = new List<string>();
@@ -59,14 +47,12 @@ namespace Audioplayer
             {
                 if (AllsongListbox.GetItemCheckState(i) == CheckState.Checked)
                 {
-                 
                   addSongs.Add(Urls[i].ToString());
                 }
-
             }
+            addSongs.Distinct();
             SqlCaller.AddSongsToPlayList(PlayListId, addSongs);
             loadAllPlsongs();
-            
         }
         void LoadAllsongs()
         {
@@ -96,7 +82,6 @@ namespace Audioplayer
             for (int i = 0; i < PlaylistSongsListbox.CheckedItems.Count; i++)
             {
                 delSongs.Add(plSongIDs[i]);
-
             }
             SqlCaller.DeleteSongFromPlatlist(delSongs);
             loadAllPlsongs();
@@ -106,6 +91,7 @@ namespace Audioplayer
         {
             SqlCaller.DeletePlaylist(PlayListId);
             this.Close();
+            form.LoadPlaylist();
         }
     }
 }

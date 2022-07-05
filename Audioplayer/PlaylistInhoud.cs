@@ -9,18 +9,8 @@ namespace Audioplayer
     [Table("PlaylistInhoud")]
     public partial class PlaylistInhoud
     {
-        [Key]
-        [Column(Order = 0)]
         public int ID { get; set; }
-
-        [Key]
-        [Column(Order = 1)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Playlist_ID { get; set; }
-
-        [Key]
-        [Column(Order = 2)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Nummer_ID { get; set; }
     }
 }

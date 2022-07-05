@@ -12,18 +12,10 @@ namespace Audioplayer
 {
     public class SqlCaller
     {
-        private SqlConnection con;
-
         public SqlCaller()
         {
-            con = new SqlConnection("Data Source=OBEJAH-LAPTOP\\SQLEXPRESS;Initial Catalog=audioPlayer;Integrated Security=True");
         }
 
-        public void CreateConnection()
-        {
-            //con = new SqlConnection("Server=OBEJAH-LAPTOP\\SQLEXPRESS;Database=audioPlayer;Trusted_Connection=True;");
-            con = new SqlConnection("Data Source=OBEJAH-LAPTOP\\SQLEXPRESS;Initial Catalog=audioPlayer;Integrated Security=True");
-        }
         public DataTable GetAllPlaylist()
         {
             DataTable result = new DataTable();
@@ -35,7 +27,7 @@ namespace Audioplayer
             {
                 var query = from p in db.Playlists
                             select p;
-                foreach(var item in query)
+                foreach (var item in query)
                 {
                     dr = result.NewRow();
                     result.Rows.Add(dr);
@@ -44,171 +36,79 @@ namespace Audioplayer
                     i++;
                 }
             }
-/*                CreateConnection();
-            con.Open();
-
-            using (con)
-            {
-                SqlCommand cmd = new SqlCommand("select * from Playlists", con);
-                SqlDataReader reader = cmd.ExecuteReader();
-                
-                result.Load(reader);
-                con.Close();
-            }*/
             return result;
         }
 
-
-      
         public void addPlaylist(string input)
         {
-            using (con)
-            {
-                using(var db = new DbContextModel())
+                using (var db = new DbContextModel())
                 {
                     var PlaylistName = input;
                     var PList = new Playlists { Name = PlaylistName };
                     db.Playlists.Add(PList);
                     db.SaveChanges();
                 }
-                //con.Open();
-                /*SqlCommand cmd = new SqlCommand("insert into Playlists values('" + input + "')", con);
-                SqlDataReader reader = cmd.ExecuteReader();*/
-
-                //con.Close();
-            }
         }
-       
         public List<string> GetAllSongs()
         {
-            /*CreateConnection();
-            con.Open();*/
             List<string> songs = new List<string>();
             using (var db = new DbContextModel())
             {
                 var query = from p in db.Nummers
                             select p;
-                foreach(var item in query)
+                foreach (var item in query)
                 {
                     songs.Add(item.Path);
                 }
             }
-
-                /*string querry = "select * from XD";
-            
-
-
-
-            SqlCommand cmd = new SqlCommand(querry, con);
-            cmd.CommandType = CommandType.Text;
-                
-
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            songs.Add(reader.GetString(1));
-                        }
-                    }
-
-            con.Close();*/
-
             return songs;
-
         }
-
         public List<int> GetAllPlaylistSongsId(int _ID)
         {
             List<int> songs = new List<int>();
             using (var db = new DbContextModel())
             {
-                var query = from p in db.PlaylistInhoud
+                var query = from p in db.PlaylistInhoud
+                            where p.Playlist_ID == _ID
                             select p;
                 foreach (var item in query)
                 {
-                    songs.Add(item.Playlist_ID);
+                    songs.Add(item.Nummer_ID);
                 }
             }
-              /*  string querry = $"select * from PlaylistContent where playlistID ='{_ID}'";
-            con.Open();
-
-
-
-            SqlCommand cmd = new SqlCommand(querry, con);
-            cmd.Connection = con;
-            cmd.CommandType = CommandType.Text;
-
-
-
-            using (SqlDataReader reader = cmd.ExecuteReader())
-            {
-                while (reader.Read())
-                {
-                    var str = reader.GetInt32(2);
-                    songs.Add(str);
-                }
-            }
-
-            con.Close();*/
             return songs;
-
         }
-       public List<string> GetSongNameById(List<int> _ID)
+        public List<string> GetSongNameById(List<int> _ID)
         {
-
-           // con.Open();
             List<string> url = new List<string>();
             foreach (var item in _ID)
             {
                 using (var db = new DbContextModel())
                 {
-                    var query = from p in db.Nummers
-                                select p;
-                    foreach (var items in query)
+                    if (item == 0)
                     {
-                        url.Add(items.Path);
+                        continue;
+                    }
+                    else
+                    {
+                        Nummers nummer = db.Nummers.Where(n => n.ID == item).SingleOrDefault();
+                        url.Add(nummer.Path);
                     }
                 }
-
-                /*SqlCommand cmd = new SqlCommand($"select Path from XD where songID = '{item}'");
-                cmd.Connection = con;
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                        url.Add(reader.GetString(0));
-
-                        }
-                    }*/
-
-
-
-
             }
-           // con.Close();
             return url;
         }
-
         public void UploadFiles(FileDialog dialog)
         {
-            /*CreateConnection();
-            con.Open();*/
-
             for (int i = 0; i < dialog.FileNames.Length; i++)
             {
                 System.Diagnostics.Debug.WriteLine(dialog.FileNames[i]);
-                using(var db = new DbContextModel())
+                using (var db = new DbContextModel())
                 {
                     var path = new Nummers { Path = dialog.FileNames[i] };
                     db.Nummers.Add(path);
                     db.SaveChanges();
                 }
-
-                /*SqlCommand cmd = new SqlCommand("insert into XD (Path) values (@Path)", con);
-                cmd.Parameters.AddWithValue("@Path", dialog.FileNames[i] + Environment.NewLine);
-                cmd.ExecuteNonQuery();*/
-
             }
         }
         public void UpdatePlaylistName(string _name, int _ID)
@@ -219,28 +119,18 @@ namespace Audioplayer
                 UpdatePlaylistItem.Name = _name;
                 db.SaveChanges();
             }
-               /* con.Open();
-
-            SqlCommand cmd = new SqlCommand($"update Playlists set Playlist = '{_name}' where PlayListID = '{_ID}'", con);
-            cmd.ExecuteNonQuery();
-            con.Close();*/
         }
         public void AddSongsToPlayList(int _playListID, List<string> _url)
         {
-           // con.Open();
-
             foreach (int item in GetSongIdsByName(_url))
             {
                 using (var db = new DbContextModel())
                 {
-                    var PListID = new PlaylistInhoud { Playlist_ID = _playListID};
+                    var PListID = new PlaylistInhoud { Playlist_ID = _playListID, Nummer_ID = item };
                     db.PlaylistInhoud.Add(PListID);
+                    db.SaveChanges();
                 }
-                    /*SqlCommand cmd = new SqlCommand($"insert into PlaylistContent values('{_playListID}', '{item}')");
-                cmd.Connection = con;
-                cmd.ExecuteNonQuery()*/;
             }
-           // con.Close();
         }
         public List<int> GetSongIdsByName(List<string> _url)
         {
@@ -251,29 +141,13 @@ namespace Audioplayer
                 {
                     Nummers nummer = db.Nummers.Where(n => n.Path == item).SingleOrDefault();
                     songs.Add(nummer.ID);
+                    db.SaveChanges();
                 }
-
-                /*SqlCommand cmd = new SqlCommand($"select songID from XD where Path Like '%{item}%'");
-                cmd.Connection = con;
-                cmd.CommandType = CommandType.Text;
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        var peepee = reader.GetInt32(0);
-                        songs.Add(peepee);
-
-                    }
-                }*/
-
             }
-
             return songs;
-
         }
         public void DeleteSongFromPlatlist(List<int> _url)
         {
-            //con.Open();
             foreach (var item in _url)
             {
                 using (var db = new DbContextModel())
@@ -285,40 +159,15 @@ namespace Audioplayer
                         db.SaveChanges();
                     }
                 }
-                /*SqlCommand cmd = new SqlCommand($"delete from PlaylistContent where songID = '{item}' ");
-                cmd.Connection = con;
-                cmd.ExecuteNonQuery();*/
             }
-            //con.Close();
-
         }
         public void DeletePlaylist(int _PlaylistId)
         {
             using (var db = new DbContextModel())
             {
-                PlaylistInhoud DeltePlaylistItem = db.PlaylistInhoud.SingleOrDefault(i => i.Playlist_ID == _PlaylistId);
-                if (DeltePlaylistItem != null)
-                {
-                    db.PlaylistInhoud.Remove(DeltePlaylistItem);
-                    db.SaveChanges();
-                }
-                Playlists DeletePlaylist = db.Playlists.SingleOrDefault(i => i.ID == _PlaylistId);
-                if (DeletePlaylist != null)
-                {
-                    db.Playlists.Remove(DeletePlaylist);
-                    db.SaveChanges();
-                }
+                Playlists playlist = db.Playlists.Where(n => n.ID == _PlaylistId).SingleOrDefault();
+                db.Playlists.Remove(playlist);
             }
-            /*con.Open();
-            SqlCommand cmd = new SqlCommand($"delete from PlaylistContent where playlistID = '{_PlaylistId}' ");
-            cmd.Connection = con;
-            cmd.ExecuteNonQuery();
-
-
-            SqlCommand cmd2 = new SqlCommand($"delete from Playlists where playlistID = '{_PlaylistId}' ");
-            cmd2.Connection = con;
-            cmd2.ExecuteNonQuery();
-            con.Close();*/
         }
         public int GetPlaylistIDByName(string _name)
         {
@@ -328,30 +177,25 @@ namespace Audioplayer
                 Playlists playlist = db.Playlists.Where(n => n.Name == _name).SingleOrDefault();
                 Id = playlist.ID;
             }
-
-            /*CreateConnection();
-            con.Open();
-            int Id=0;
-            SqlCommand cmd = new SqlCommand($"select playlistID from Playlists where Playlist='{_name}';");
-            cmd.Connection = con;
-            SqlDataReader dr = cmd.ExecuteReader();
-            if (dr.Read())
-            {
-                Id = dr.GetInt32(0);
-            }
-            con.Close();*/
             return Id;
-            /*using (SqlDataReader reader = cmd.ExecuteReader())
-            {
-                
-                    
-
-                
-            }*/
-
-
-
-
         }
+
+        public int GetNumberOfSongs(String Path)
+        {
+            using (var db = new DbContextModel())
+            {
+                Nummers nummers = db.Nummers.Where(p => p.Path == Path).SingleOrDefault();
+                if(nummers != null)
+                {
+                    return 1;
+                }
+                else 
+                {
+                    return 0;
+                }
+            }
+        }
+
     }
 }
+

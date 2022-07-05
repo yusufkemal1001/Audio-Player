@@ -8,7 +8,7 @@ namespace Audioplayer
     public partial class DbContextModel : DbContext
     {
         public DbContextModel()
-            : base("name=Model1")
+            : base("name=DbContextModel")
         {
         }
 
@@ -20,11 +20,11 @@ namespace Audioplayer
         {
             modelBuilder.Entity<Nummers>()
                 .Property(e => e.Path)
-                .IsFixedLength();
+                .IsUnicode(false);
 
             modelBuilder.Entity<Playlists>()
                 .Property(e => e.Name)
-                .IsFixedLength();
+                .IsUnicode(false);
         }
     }
 }

@@ -75,7 +75,6 @@
       <DependentUpon>Form3.cs</DependentUpon>
     </Compile>
     <Compile Include="DbContextModel.cs" />
-    <Compile Include="Music Controllers\Mp3Player.cs" />
     <Compile Include="Music Controllers\MusicController.cs" />
     <Compile Include="Music Controllers\Queue.cs" />
     <Compile Include="Nummers.cs" />

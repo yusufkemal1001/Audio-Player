@@ -40,6 +40,7 @@
             // 
             // AllsongListbox
             // 
+            this.AllsongListbox.CheckOnClick = true;
             this.AllsongListbox.FormattingEnabled = true;
             this.AllsongListbox.Location = new System.Drawing.Point(281, 84);
             this.AllsongListbox.Name = "AllsongListbox";
@@ -86,6 +87,7 @@
             // 
             // PlaylistSongsListbox
             // 
+            this.PlaylistSongsListbox.CheckOnClick = true;
             this.PlaylistSongsListbox.FormattingEnabled = true;
             this.PlaylistSongsListbox.Location = new System.Drawing.Point(36, 84);
             this.PlaylistSongsListbox.Name = "PlaylistSongsListbox";
@@ -127,7 +129,6 @@
             this.Controls.Add(this.AllsongListbox);
             this.Name = "Form3";
             this.Text = "Form3";
-            this.Load += new System.EventHandler(this.Form3_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

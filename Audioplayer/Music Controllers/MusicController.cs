@@ -20,75 +20,12 @@ namespace Audioplayer.Music_Controllers
         public MusicController(AxWMPLib.AxWindowsMediaPlayer _mediaPlayer)
         {
             mediaPlayer = _mediaPlayer;
-            
-        }
-        public void PlaySong()
-        {
-            LoadSong(queue.QueueList[0]);
-        }
-        private void LoadSong(string fileName)
-        {
-            if (queue == null)
-            {
-            }
-            string fileType = fileName.Substring(fileName.Length - 4);
-            if (fileType != ".mp3" && fileType != ".aac" && fileType != ".wav")
-            {
-                
-            }
-  
-            //currentSong = fileName;
-            
         }
 
-      /*  public void NextSong()
-        {
-            int currentInt = queue.QueueList.IndexOf(currentSong);
-            int nextint = currentInt + 1;
-            extentions.DebugOutput(currentInt.ToString());
-            extentions.DebugOutput(nextint.ToString());
-            if (nextint > queue.QueueList.Count - 1)
-            {
-                nextint = 0;
-            }
-            string newSong = queue.QueueList[nextint];
-
-
-            Play(newSong);
-        }
-        public void PreviousSong()
-        {
-            int currentInt = queue.QueueList.IndexOf(currentSong);
-            int nextint = currentInt - 1;
-            extentions.DebugOutput(currentInt.ToString());
-            extentions.DebugOutput(nextint.ToString());
-            if (nextint < 0)
-            {
-                nextint = queue.QueueList.Count - 1;
-            }
-            string newSong = queue.QueueList[nextint];
-            Play(newSong);
-        }
-
-        public void PauseSong()
-        {
-            string fileType = currentSong.Substring(currentSong.Length - 4);
-            if (fileType != ".mp3" && fileType != ".aac" && fileType != ".wav")
-            {
-                return;
-            }
-            currentPlayer.PauseAudio(mediaPlayer);
-        }
-        public void UnPause() {
-            currentPlayer.UnPause(mediaPlayer);
-        }*/
         public void MakeQueue()
         {
             MakeAxPlayslist();
-
             queue = new Queue();
-            
-         
             foreach (var item in queue.QueueList)
             {
                 extentions.DebugOutput(item);
@@ -104,25 +41,14 @@ namespace Audioplayer.Music_Controllers
         {
             if (_reset)
             {
-                //queueListbox.Clear();
                 mediaPlayer.currentPlaylist.clear();
             }
             for (int i = 0; i < selected.Count; i++)
             {
+                string addsong = SongUrls.Where(newsong => newsong.Contains(selected[i])).FirstOrDefault();
                 queue.AddToQueue(selected[i]);
-                //queueListbox.Add(item);
-                mediaPlayer.currentPlaylist.appendItem(mediaPlayer.newMedia(SongUrls[i]));
+                mediaPlayer.currentPlaylist.appendItem(mediaPlayer.newMedia(addsong));
             }
-           
-        }
-
-        public void ShowQueue(ListBox listBox)
-        {
-            listBox.Visible = !listBox.Visible;
-        }
-        private void SwitchBool()
-        {
-           
         }
         void MakeAxPlayslist()
         {
@@ -134,11 +60,8 @@ namespace Audioplayer.Music_Controllers
         }
         public void SendUrlToList(List<string> songs)
         {
-            
            SongUrls = songs;
-         
-            
-            extentions.DebugOutput(SongUrls.Count.ToString());
+           extentions.DebugOutput(SongUrls.Count.ToString());
         }
     }
 }

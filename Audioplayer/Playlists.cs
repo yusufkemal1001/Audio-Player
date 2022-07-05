@@ -10,7 +10,7 @@ namespace Audioplayer
     {
         public int ID { get; set; }
 
-        [StringLength(255)]
+        [StringLength(50)]
         public string Name { get; set; }
     }
 }
